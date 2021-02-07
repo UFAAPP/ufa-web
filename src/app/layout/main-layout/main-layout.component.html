@@ -1,0 +1,6 @@
+<div id="main-layout">
+  <app-header></app-header>
+  <div id="grid-body" [@routeAnimations]="prepareRoute(outlet)">
+    <router-outlet #outlet="outlet"></router-outlet>
+  </div>
+</div>
