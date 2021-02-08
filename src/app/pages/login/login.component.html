@@ -1,1 +1,73 @@
-<p>login works!</p>
+<div class="content">
+  <div class="card">
+    <div class="logo-wrapper">
+      <img src="../../../assets/images/logo.png" alt="logo" />
+    </div>
+    <form [formGroup]="loginFormGroup" (ngSubmit)="login()">
+      <div class="input-group">
+        <div class="p-float-label full-width">
+          <input
+            type="text"
+            [class]="
+              loginFormGroup.controls['username'].errors?.required &&
+              loginFormGroup.controls['username'].touched
+                ? 'ng-invalid ng-dirty'
+                : 'p-inputtext-lg'
+            "
+            pInputText
+            formControlName="username"
+            required
+          />
+          <label for="float-input">CPF ou E-mail</label>
+        </div>
+        <div class="form-error">
+          <p
+            *ngIf="
+              loginFormGroup.controls['username'].errors?.required &&
+              loginFormGroup.controls['username'].touched
+            "
+          >
+            Email ou CPF é um campo obrigatório.
+          </p>
+        </div>
+      </div>
+      <div class="input-group">
+        <div class="p-float-label full-width">
+          <input
+            type="password"
+            [class]="
+              loginFormGroup.controls['password'].errors?.required &&
+              loginFormGroup.controls['password'].touched
+                ? 'ng-invalid ng-dirty'
+                : 'p-inputtext-lg'
+            "
+            pInputText
+            formControlName="password"
+            required
+          />
+          <label for="float-input">Senha</label>
+        </div>
+        <div class="form-error">
+          <p
+            *ngIf="
+              loginFormGroup.controls['password'].errors?.required &&
+              loginFormGroup.controls['password'].touched
+            "
+          >
+            Senha é um campo obrigatório.
+          </p>
+        </div>
+      </div>
+      <div class="actions">
+        <p-button
+          pRipple
+          label="Entrar"
+          class="full-width"
+          styleClass="p-button-lg"
+          type="submit"
+          [disabled]="loginFormGroup.invalid"
+        ></p-button>
+      </div>
+    </form>
+  </div>
+</div>
