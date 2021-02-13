@@ -1,10 +1,20 @@
 <div class="content">
-  <div class="card">
+  <div class="left">
     <div class="logo-wrapper">
-      <img src="../../../assets/images/logo.png" alt="logo" />
+      <img src="../../../assets/images/logo-trans.png" />
     </div>
+    <h1>Law and Order</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+      ullamcorper nisl erat, vel convallis elit fermentum pellentesque. Sed
+      mollis velit facilisis facilisis viverra.
+    </p>
+  </div>
+  <div class="right">
     <form [formGroup]="loginFormGroup" (ngSubmit)="login()">
-      <mat-form-field class="full-width" appearance="outline">
+      <h2>Faça login na sua conta</h2>
+      <p>Acesse seu dashboard</p>
+      <mat-form-field class="full-width">
         <mat-label>Email ou CPF</mat-label>
         <input type="text" matInput formControlName="username" required />
         <mat-error
@@ -13,7 +23,7 @@
           Email ou Cpf é um campo obrigatório
         </mat-error>
       </mat-form-field>
-      <mat-form-field class="full-width" appearance="outline">
+      <mat-form-field class="full-width">
         <mat-label>Senha</mat-label>
         <input type="password" matInput formControlName="password" required />
         <mat-error
@@ -23,7 +33,14 @@
         </mat-error>
       </mat-form-field>
       <div class="actions">
-        <button mat-raised-button class="main-button" color="primary" type="submit">Entrar</button>
+        <button
+          mat-button
+          class="login-button"
+          color="primary"
+          type="submit"
+        >
+          Entrar
+        </button>
       </div>
     </form>
   </div>
