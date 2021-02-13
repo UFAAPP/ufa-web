@@ -3,7 +3,6 @@
   height: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: 20px;
   .left {
     display: flex;
@@ -41,5 +40,38 @@
   .right {
     width: 50%;
     height: 100%;
+    mat-list {
+      overflow-y: auto;
+      overflow-x: hidden;
+      height: calc(100vh - 100px);
+      padding-right: 20px;
+      mat-list-item {
+        height: auto;
+        mat-card {
+          background: none;
+          border: none;
+          box-shadow: none;
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          cursor: pointer;
+          transition: transform 0.2s;
+          &:hover {
+            transform: scale(
+              1.1
+            ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+          }
+          mat-card-header {
+            .header-image {
+              background-size: cover;
+            }
+          }
+          mat-card-content {
+            display: flex;
+            align-items: center;
+          }
+        }
+      }
+    }
   }
 }

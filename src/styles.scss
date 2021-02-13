@@ -24,8 +24,6 @@ html {
   background: #f3f7fa;
 }
 
-
-
 .btn-icon {
   cursor: pointer;
 }
@@ -78,4 +76,14 @@ body {
   --status-indicator-color-negative: rgb(255, 77, 77);
   --status-indicator-color-negative-semi: rgba(255, 77, 77, 0.5);
   --status-indicator-color-negative-transparent: rgba(255, 77, 77, 0);
+}
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-track {
+  background-color: var(--status-indicator-color);
 }
