@@ -1,8 +1,9 @@
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: #fff;
 }
 html,
 body,
@@ -20,17 +21,22 @@ input {
   font-family: 'Roboto', sans-serif;
 }
 html {
-  background: #fff;
+  background: #f3f7fa;
+}
+
+
+
+.btn-icon {
+  cursor: pointer;
 }
 .full-width {
   width: 100%;
   height: auto;
-  input,
   button {
     width: 100%;
   }
 }
-.input-group{
+.input-group {
   margin-bottom: 25px;
   min-height: 60px;
 }
@@ -42,4 +48,34 @@ html {
     color: red;
     font-size: 12px;
   }
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+:root {
+  --primary-color: #4a596a;
+  --status-indicator-size: 10px;
+  --header-height: 60px;
+  --status-indicator-animation-duration: 2s;
+  --status-indicator-color: rgb(216, 226, 233);
+  --status-indicator-color-semi: rgba(216, 226, 233, 0.5);
+  --status-indicator-color-transparent: rgba(216, 226, 233, 0);
+  --status-indicator-color-active: rgb(0, 149, 255);
+  --status-indicator-color-active-semi: rgba(0, 149, 255, 0.5);
+  --status-indicator-color-active-transparent: rgba(0, 149, 255, 0);
+  --status-indicator-color-positive: rgb(75, 210, 143);
+  --status-indicator-color-positive-semi: rgba(75, 210, 143, 0.5);
+  --status-indicator-color-positive-transparent: rgba(75, 210, 143, 0);
+  --status-indicator-color-intermediary: rgb(255, 170, 0);
+  --status-indicator-color-intermediary-semi: rgba(255, 170, 0, 0.5);
+  --status-indicator-color-intermediary-transparent: rgba(255, 170, 0, 0);
+  --status-indicator-color-negative: rgb(255, 77, 77);
+  --status-indicator-color-negative-semi: rgba(255, 77, 77, 0.5);
+  --status-indicator-color-negative-transparent: rgba(255, 77, 77, 0);
 }

@@ -4,69 +4,26 @@
       <img src="../../../assets/images/logo.png" alt="logo" />
     </div>
     <form [formGroup]="loginFormGroup" (ngSubmit)="login()">
-      <div class="input-group">
-        <div class="p-float-label full-width">
-          <input
-            type="text"
-            [class]="
-              loginFormGroup.controls['username'].errors?.required &&
-              loginFormGroup.controls['username'].touched
-                ? 'ng-invalid ng-dirty'
-                : 'p-inputtext-lg'
-            "
-            pInputText
-            formControlName="username"
-            required
-          />
-          <label for="float-input">CPF ou E-mail</label>
-        </div>
-        <div class="form-error">
-          <p
-            *ngIf="
-              loginFormGroup.controls['username'].errors?.required &&
-              loginFormGroup.controls['username'].touched
-            "
-          >
-            Email ou CPF é um campo obrigatório.
-          </p>
-        </div>
-      </div>
-      <div class="input-group">
-        <div class="p-float-label full-width">
-          <input
-            type="password"
-            [class]="
-              loginFormGroup.controls['password'].errors?.required &&
-              loginFormGroup.controls['password'].touched
-                ? 'ng-invalid ng-dirty'
-                : 'p-inputtext-lg'
-            "
-            pInputText
-            formControlName="password"
-            required
-          />
-          <label for="float-input">Senha</label>
-        </div>
-        <div class="form-error">
-          <p
-            *ngIf="
-              loginFormGroup.controls['password'].errors?.required &&
-              loginFormGroup.controls['password'].touched
-            "
-          >
-            Senha é um campo obrigatório.
-          </p>
-        </div>
-      </div>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Email ou CPF</mat-label>
+        <input type="text" matInput formControlName="username" required />
+        <mat-error
+          *ngIf="loginFormGroup.controls['username'].hasError('required')"
+        >
+          Email ou Cpf é um campo obrigatório
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Senha</mat-label>
+        <input type="password" matInput formControlName="password" required />
+        <mat-error
+          *ngIf="loginFormGroup.controls['password'].hasError('required')"
+        >
+          Senha é um campo obrigatório
+        </mat-error>
+      </mat-form-field>
       <div class="actions">
-        <p-button
-          pRipple
-          label="Entrar"
-          class="full-width"
-          styleClass="p-button-lg"
-          type="submit"
-          [disabled]="loginFormGroup.invalid"
-        ></p-button>
+        <button mat-raised-button class="main-button" color="primary" type="submit">Entrar</button>
       </div>
     </form>
   </div>

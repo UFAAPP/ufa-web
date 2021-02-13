@@ -30,7 +30,9 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   login(): void {
-    console.log(this.loginFormGroup.controls['username']);
+    if(this.loginFormGroup.valid){
+      this.router.navigateByUrl('/dashboard');
+    }
   }
   navigateTo(path: string): void {
     this.router.navigateByUrl(path);
