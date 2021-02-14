@@ -19,9 +19,11 @@ input {
   border: 0;
   background: none;
   font-family: 'Roboto', sans-serif;
+  
 }
 html {
   background: #f3f7fa;
+  color:var(--primary-color);
 }
 
 .btn-icon {
