@@ -18,7 +18,9 @@
   </div>
   <div class="right">
     <mat-list>
-      <mat-list-item *ngFor="let contact of contactList"
+      <mat-list-item
+        *ngFor="let contact of contactList"
+        (click)="openDetails(contact)"
         ><mat-card>
           <mat-card-header>
             <div

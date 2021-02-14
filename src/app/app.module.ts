@@ -9,6 +9,8 @@ import { LoginModule } from './pages/login/login.module';
 import { DashboardModule } from './pages/dashboard/dashboard.module';
 import { ContactsModule } from './pages/contacts/contacts.module';
 import { LawSuitModule } from './pages/lawsuit/lawsuit.module';
+import { ProfileModule } from './pages/profile/profile.module';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +22,8 @@ import { LawSuitModule } from './pages/lawsuit/lawsuit.module';
     LoginModule,
     DashboardModule,
     ContactsModule,
-    LawSuitModule
+    LawSuitModule,
+    ProfileModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
