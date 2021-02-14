@@ -1,37 +1,73 @@
 .content {
   padding: 30px;
   .cards {
+    display: flex;
+    justify-content: space-between;
     .stats-card {
       padding: 0;
-      width: 190px;
-      height: 200px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      width: calc((100vw -200px) / 4);
+      margin-left: 5px;
+      margin-right: 5px;
+      color: var(--primary-color);
+      &:first-child {
+        margin-left: 0px;
+      }
+      &:last-child {
+        margin-right: 0px;
+      }
       .widget-header {
         display: flex;
+        flex: 1;
+        position: relative;
         .top-side {
           width: 100%;
           padding: 20px;
           display: flex;
-          justify-content: space-between;
+          min-height: 110px;
           .widget-icon-box {
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.02);
+            border-radius: 4px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            flex: 1;
             align-items: center;
+            justify-content: space-evenly;
+            color: #5f8fdf;
             .badge-box {
+              display: flex;
               .badge {
                 display: flex;
                 align-items: center;
+                :first-child {
+                  margin-right: 10px;
+                }
               }
             }
           }
+          .widget-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            flex: 1;
+            .widget-title {
+              font-weight: 700;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              opacity: 0.5;
+            }
+          }
         }
-        svg {
-          align-self: baseline;
-          justify-self: baseline;
-        }
+      }
+      svg {
+        flex: 1;
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
       }
     }
   }

@@ -8,6 +8,7 @@ import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { AuthService } from '../common/services/authentication/auth.service';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { MatListModule } from '@angular/material/list';
     RouterModule.forChild([]),
     MatSidenavModule,
     MatListModule,
+    MatCardModule,
   ],
   exports: [MainLayoutComponent, FullPageComponent],
   declarations: [MainLayoutComponent, FullPageComponent],

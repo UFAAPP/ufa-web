@@ -20,9 +20,19 @@
     <div class="layout">
       <header>
         <nav>
-          <span class="material-icons btn-icon" (click)="openSideBar()">
-            reorder
-          </span>
+          <mat-card>
+            <span class="material-icons btn-icon" (click)="openSideBar()">
+              reorder
+            </span>
+            <mat-card-header>
+              <div
+                mat-card-avatar
+                class="avatar"
+                style="
+                  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+                "
+              ></div></mat-card-header
+          ></mat-card>
         </nav>
       </header>
       <div class="page-wrapper" [@routeAnimations]="prepareRoute(outlet)">
