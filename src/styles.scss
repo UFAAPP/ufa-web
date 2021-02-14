@@ -87,3 +87,36 @@ body {
 ::-webkit-scrollbar-track {
   background-color: var(--status-indicator-color);
 }
+.loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 56px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.table-container {
+  table {
+    width: 100%;
+    border-radius: 8px;
+  }
+}
+// .mat-row:nth-child(even) {
+//   background-color: var(--status-indicator-color-semi);
+// }
+
+.mat-row:nth-child(odd) {
+  background-color: rgba(243,247,250,.4);
+}
+button{
+  &.action{
+    cursor: pointer;
+    &:focus {
+      outline: 0;
+    }
+  }
+}

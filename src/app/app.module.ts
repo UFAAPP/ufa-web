@@ -7,8 +7,8 @@ import { AppComponent } from './app.component';
 import { LayoutModule } from './layout/layout.module';
 import { LoginModule } from './pages/login/login.module';
 import { DashboardModule } from './pages/dashboard/dashboard.module';
-import { ContactsComponent } from './pages/contacts/contacts.component';
 import { ContactsModule } from './pages/contacts/contacts.module';
+import { LawSuitModule } from './pages/lawsuit/lawsuit.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +19,8 @@ import { ContactsModule } from './pages/contacts/contacts.module';
     LayoutModule,
     LoginModule,
     DashboardModule,
-    ContactsModule
+    ContactsModule,
+    LawSuitModule
   ],
   providers: [],
   bootstrap: [AppComponent],
