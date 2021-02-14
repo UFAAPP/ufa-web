@@ -26,5 +26,6 @@ import { MatCardModule } from '@angular/material/card';
     MatCardModule,
   ],
   declarations: [ContactsComponent],
+  exports: [ContactsComponent],
 })
 export class ContactsModule {}

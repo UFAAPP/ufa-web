@@ -3,7 +3,6 @@
   height: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 20px;
   .left {
     display: flex;
     align-items: center;
@@ -43,7 +42,6 @@
     mat-list {
       overflow-y: auto;
       overflow-x: hidden;
-      height: calc(100vh - 100px);
       padding-right: 20px;
       mat-list-item {
         height: auto;

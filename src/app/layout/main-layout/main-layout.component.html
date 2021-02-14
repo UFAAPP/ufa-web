@@ -1,43 +1,48 @@
-<mat-drawer-container hasBackdrop="false" autosize>
-  <mat-drawer #drawer opened mode="side">
-    <div class="sidebar-header">
-      <h3>LAW AND ORDER</h3>
-    </div>
-    <div class="sidebar-nav">
-      <mat-list>
-        <mat-list-item
-          *ngFor="let menu of menuList"
-          [ngClass]="{ active: path === menu.path }"
-          (click)="navigateTo(menu.path)"
+<div class="layout">
+  <header>
+    <nav>
+      <mat-card>
+        <div class="logo-wrapper">
+          <h1>LAW AND ORDER</h1>
+        </div>
+        <mat-list class="nav-menu">
+          <mat-list-item
+            *ngFor="let menu of menuList"
+            [ngClass]="{ active: path === menu.path }"
+            (click)="navigateTo(menu.path)"
+          >
+            <span class="material-icons"> {{ menu.icon }} </span>
+            <p>{{ menu.label }}</p>
+          </mat-list-item>
+        </mat-list>
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
         >
-          <span class="material-icons"> {{ menu.icon }} </span>
-          <p>{{ menu.label }}</p>
-        </mat-list-item>
-      </mat-list>
-    </div>
-  </mat-drawer>
-  <mat-drawer-content>
-    <div class="layout">
-      <header>
-        <nav>
-          <mat-card>
-            <span class="material-icons btn-icon" (click)="openSideBar()">
-              reorder
-            </span>
-            <mat-card-header>
-              <div
-                mat-card-avatar
-                class="avatar"
-                style="
-                  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-                "
-              ></div></mat-card-header
-          ></mat-card>
-        </nav>
-      </header>
-      <div class="page-wrapper" [@routeAnimations]="prepareRoute(outlet)">
-        <router-outlet #outlet="outlet"></router-outlet>
-      </div>
-    </div>
-  </mat-drawer-content>
-</mat-drawer-container>
+          <mat-card-header>
+            <div
+              mat-card-avatar
+              class="avatar"
+              style="
+                background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+              "
+            ></div
+          ></mat-card-header>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>perm_identity</mat-icon>
+            <span>Perfil</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>logout</mat-icon>
+            <span>Sair</span>
+          </button>
+        </mat-menu>
+      </mat-card>
+    </nav>
+  </header>
+  <div class="page-wrapper" [@routeAnimations]="prepareRoute(outlet)">
+    <router-outlet #outlet="outlet"></router-outlet>
+  </div>
+</div>
