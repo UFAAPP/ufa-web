@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   imports: [
@@ -11,6 +12,7 @@ import { DashboardComponent } from './dashboard.component';
     BrowserAnimationsModule, // required animations module
     DashboardRoutingModule,
     HttpClientModule,
+    MatCardModule,
   ],
   declarations: [DashboardComponent],
 })
