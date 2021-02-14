@@ -6,9 +6,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FullPageComponent } from './full-page/full-page.component';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { AuthService } from '../common/services/authentication/auth.service';
-import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   imports: [
@@ -16,9 +18,11 @@ import { MatCardModule } from '@angular/material/card';
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forChild([]),
-    MatSidenavModule,
     MatListModule,
     MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatDialogModule
   ],
   exports: [MainLayoutComponent, FullPageComponent],
   declarations: [MainLayoutComponent, FullPageComponent],

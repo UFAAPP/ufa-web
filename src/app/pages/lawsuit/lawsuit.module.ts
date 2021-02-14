@@ -20,5 +20,6 @@ import { MatMenuModule } from '@angular/material/menu';
     MatMenuModule,
   ],
   declarations: [LawsuitComponent],
+  exports: [LawsuitComponent],
 })
 export class LawSuitModule {}

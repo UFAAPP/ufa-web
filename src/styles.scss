@@ -19,11 +19,10 @@ input {
   border: 0;
   background: none;
   font-family: 'Roboto', sans-serif;
-  
 }
 html {
-  background: #f3f7fa;
-  color:var(--primary-color);
+  background: var(--background-color);
+  color: var(--primary-color);
 }
 
 .btn-icon {
@@ -60,8 +59,9 @@ body {
 }
 :root {
   --primary-color: #4a596a;
+  --background-color: #f3f7fa;
   --status-indicator-size: 10px;
-  --header-height: 60px;
+  --header-height: 70px;
   --status-indicator-animation-duration: 2s;
   --status-indicator-color: rgb(216, 226, 233);
   --status-indicator-color-semi: rgba(216, 226, 233, 0.5);
@@ -107,15 +107,12 @@ body {
     border-radius: 8px;
   }
 }
-// .mat-row:nth-child(even) {
-//   background-color: var(--status-indicator-color-semi);
-// }
 
 .mat-row:nth-child(odd) {
-  background-color: rgba(243,247,250,.4);
+  background-color: rgba(243, 247, 250, 0.4);
 }
-button{
-  &.action{
+button {
+  &.action {
     cursor: pointer;
     &:focus {
       outline: 0;

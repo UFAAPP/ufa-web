@@ -10,6 +10,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ContactDetailComponent } from './components/contact-detail/contact-detail.component';
 
 @NgModule({
   imports: [
@@ -24,7 +26,9 @@ import { MatCardModule } from '@angular/material/card';
     MatButtonModule,
     MatListModule,
     MatCardModule,
+    MatDialogModule
   ],
-  declarations: [ContactsComponent],
+  declarations: [ContactsComponent, ContactDetailComponent],
+  exports: [ContactsComponent],
 })
 export class ContactsModule {}
