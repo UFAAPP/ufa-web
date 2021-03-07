@@ -10,6 +10,7 @@ import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { StorageService } from '../services/storage/storage.service';
 import { catchError, filter, take, switchMap } from 'rxjs/operators';
 import { AuthService } from '../services/authentication/auth.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class AuthorizationInterceptor implements HttpInterceptor {
@@ -28,10 +29,14 @@ export class AuthorizationInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     const user = this.storageService.currentUser;
     const urlRequest = request.url;
-    const accessToken = user.access_token;
-    if (accessToken) {
-      request = this.addToken(request, accessToken);
+    if (user && request.url.match(environment.APIs.URL)) {
+      const headers: any = {
+        Authorization: `JWT ${user.access_token}`,
+      };
+      this.setDefaultHeaders(request, headers);
+      request = request.clone({ setHeaders: headers });
     }
+
     return next.handle(request).pipe(
       catchError((error) => {
         if (error instanceof HttpErrorResponse && error.status === 401) {
@@ -44,7 +49,13 @@ export class AuthorizationInterceptor implements HttpInterceptor {
   }
 
   setDefaultHeaders(request: HttpRequest<any>, headers: any): void {
-    if (request.headers.has('Content-Type') || request.method === 'GET') {
+    // headers['Access-Control-Allow-Credentials'] = 'true';
+    // headers['Access-Control-Allow-Methods'] =
+    //   'GET, POST, PATCH, PUT, DELETE, OPTIONS';
+    // headers['Access-Control-Allow-Headers'] =
+    //   'Origin, Content-Type, X-Auth-Token';
+    // headers['Access-Control-Allow-Origin'] = '*';
+    if (request.method === 'GET') {
       return;
     }
     headers['Content-Type'] = 'application/json';

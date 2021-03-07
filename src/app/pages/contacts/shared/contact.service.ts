@@ -13,10 +13,10 @@ export class ContactService {
   apiUrl = environment.APIs.URL;
   constructor(private httpClient: HttpClient) {}
 
-  getContacts(): Observable<IContact[]> {
-    return of(CONTACTLIST);
-  }
   // getContacts(): Observable<IContact[]> {
-  //   return this.httpClient.get<IContact[]>(`${this.apiUrl}/clients`);
+  //   return of(CONTACTLIST);
   // }
+  getContacts(): Observable<IContact[]> {
+    return this.httpClient.get<IContact[]>(`${this.apiUrl}/clients`);
+  }
 }

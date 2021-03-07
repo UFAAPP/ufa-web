@@ -28,7 +28,9 @@ export class MainLayoutComponent {
 
   ngOnInit(): void {
     this.path = this.router.url;
-    this.companyName = `${this.storageService.currentUser.user.first_name} ${this.storageService.currentUser.user.last_name}`;
+    if (this.storageService.currentUser) {
+      this.companyName = `${this.storageService.currentUser.user.first_name} ${this.storageService.currentUser.user.last_name}`;
+    }
     this.mainLayoutService
       .getMenuList()
       .then((MENULIST) => (this.menuList = MENULIST));
