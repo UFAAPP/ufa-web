@@ -11,16 +11,38 @@
     </p>
   </div>
   <div class="right">
+    <div class="loading-fade" *ngIf="loading">
+      <mat-progress-spinner
+        class="example-margin"
+        [color]="color"
+        [mode]="mode"
+        [value]="value"
+      >
+      </mat-progress-spinner>
+    </div>
     <form [formGroup]="loginFormGroup" (ngSubmit)="login()">
       <h2>Faça login na sua conta</h2>
       <p>Acesse seu dashboard</p>
       <mat-form-field class="full-width">
         <mat-label>Email ou CPF</mat-label>
-        <input type="text" matInput formControlName="username" required />
-        <mat-error
-          *ngIf="loginFormGroup.controls['username'].hasError('required')"
-        >
-          Email ou Cpf é um campo obrigatório
+        <input
+          type="text"
+          matInput
+          formControlName="username"
+          required
+          (input)="setMask()"
+          [mask]="cpfEmailMask"
+        />
+        <mat-error>
+          <p *ngIf="loginFormGroup.controls['username'].hasError('required')">
+            Email ou Cpf é um campo obrigatório
+          </p>
+          <p *ngIf="loginFormGroup.controls['username'].errors?.invalidCpf">
+            CPF inválido.
+          </p>
+          <p *ngIf="loginFormGroup.controls['username'].errors?.invalidEmail">
+            Email inválido.
+          </p>
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width">
@@ -33,12 +55,7 @@
         </mat-error>
       </mat-form-field>
       <div class="actions">
-        <button
-          mat-button
-          class="login-button"
-          color="primary"
-          type="submit"
-        >
+        <button mat-button class="login-button" color="primary" type="submit">
           Entrar
         </button>
       </div>

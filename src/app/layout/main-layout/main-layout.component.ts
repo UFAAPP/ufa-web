@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router, RouterOutlet } from '@angular/router';
 import { slideInOutAnimation } from 'src/app/common/animations/animations';
+import { AuthService } from 'src/app/common/services/authentication/auth.service';
 import { ISideBar } from './shared/main-layout-model';
 import { MainLayoutService } from './shared/main-layout.service';
 
@@ -18,7 +19,8 @@ export class MainLayoutComponent {
   @ViewChild('drawer') sidenav!: MatSidenav;
   constructor(
     private mainLayoutService: MainLayoutService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -37,5 +39,8 @@ export class MainLayoutComponent {
   }
   openSideBar(): void {
     this.sidenav.toggle();
+  }
+  logout(): void {
+    this.authService.logout();
   }
 }

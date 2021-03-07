@@ -1,4 +1,5 @@
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~ngx-toastr/toastr';
 
 * {
   margin: 0;
@@ -133,4 +134,14 @@ button.main-button {
 button.main-button-inverse {
   border: 1px solid var(--primary-color) !important;
   color: var(--primary-color);
+}
+.loading-fade {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #ffffff6e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
 }
