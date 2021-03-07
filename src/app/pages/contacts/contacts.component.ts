@@ -22,7 +22,7 @@ export class ContactsComponent implements OnInit {
   ngOnInit(): void {
     this.contactService
       .getContacts()
-      .then((CONTACTLIST) => (this.contactList = CONTACTLIST));
+      .subscribe((CONTACTLIST) => (this.contactList = CONTACTLIST));
   }
 
   openDetails(contact: IContact) {

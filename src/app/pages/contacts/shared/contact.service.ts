@@ -1,4 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { of } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { CONTACTLIST } from './contacts-mock';
 import { IContact } from './contacts-model';
 
@@ -6,9 +10,13 @@ import { IContact } from './contacts-model';
   providedIn: 'root',
 })
 export class ContactService {
-  constructor() {}
+  apiUrl = environment.APIs.URL;
+  constructor(private httpClient: HttpClient) {}
 
-  getContacts(): Promise<IContact[]> {
-    return Promise.resolve(CONTACTLIST);
+  getContacts(): Observable<IContact[]> {
+    return of(CONTACTLIST);
   }
+  // getContacts(): Observable<IContact[]> {
+  //   return this.httpClient.get<IContact[]>(`${this.apiUrl}/clients`);
+  // }
 }

@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   APIs: {
-    URL: 'https://law-order-api.herokuapp.com',
+    URL: 'http://api.ufa.app.br',
     BRASILAPI: 'https://brasilapi.com.br/api/cep/v1',
   },
 };
