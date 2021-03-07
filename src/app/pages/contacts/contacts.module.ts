@@ -12,6 +12,9 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ContactDetailComponent } from './components/contact-detail/contact-detail.component';
+import { AvatarModule } from 'ngx-avatar';
+import { MatIconModule } from '@angular/material/icon';
+import { AuthGuard } from 'src/app/common/services/authentication/auth-guard';
 
 @NgModule({
   imports: [
@@ -26,9 +29,12 @@ import { ContactDetailComponent } from './components/contact-detail/contact-deta
     MatButtonModule,
     MatListModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    AvatarModule,
+    MatIconModule,
   ],
   declarations: [ContactsComponent, ContactDetailComponent],
+  providers: [AuthGuard],
   exports: [ContactsComponent],
 })
 export class ContactsModule {}

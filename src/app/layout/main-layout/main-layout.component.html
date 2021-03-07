@@ -3,7 +3,7 @@
     <nav>
       <mat-card>
         <div class="logo-wrapper">
-          <h1>LAW AND ORDER</h1>
+          <h1>UFA!</h1>
         </div>
         <mat-list class="nav-menu">
           <mat-list-item
@@ -16,22 +16,14 @@
           </mat-list-item>
         </mat-list>
         <button mat-icon-button [matMenuTriggerFor]="menu">
-          <mat-card-header>
-            <div
-              mat-card-avatar
-              class="avatar"
-              style="
-                background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-              "
-            ></div
-          ></mat-card-header>
+          <ngx-avatar name="{{companyName}}"></ngx-avatar>
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item (click)="navigateTo('/perfil')">
             <mat-icon>perm_identity</mat-icon>
             <span>Perfil</span>
           </button>
-          <button mat-menu-item>
+          <button mat-menu-item (click)="logout()">
             <mat-icon>logout</mat-icon>
             <span>Sair</span>
           </button>

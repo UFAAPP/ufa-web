@@ -1,3 +1,49 @@
 <mat-dialog-content>
-  <button mat-button mat-dialog-close>Close</button>
+  <div class="top">
+    <div class="close-wrapper">
+      <button mat-button mat-dialog-close>
+        <span class="material-icons"> close </span>
+      </button>
+    </div>
+    <ngx-avatar [name]="contact.name" [size]="80"></ngx-avatar>
+  </div>
+  <div class="bottom">
+    <form [formGroup]="contactFormGroup">
+      <mat-form-field class="material-form" appearance="outline">
+        <mat-label>Nome</mat-label>
+        <input matInput formControlName="name" placeholder="Nome completo" />
+      </mat-form-field>
+      <mat-form-field class="material-form" appearance="outline">
+        <mat-label>CPF</mat-label>
+        <input matInput formControlName="social_number" placeholder="CPF" />
+      </mat-form-field>
+      <mat-form-field class="material-form" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" placeholder="Email" />
+      </mat-form-field>
+      <mat-form-field class="material-form" appearance="outline">
+        <mat-label>Telefone</mat-label>
+        <input matInput formControlName="phone" placeholder="Telefone" />
+      </mat-form-field>
+      <mat-form-field class="material-form" appearance="outline">
+        <mat-label>WhatsApp</mat-label>
+        <input matInput formControlName="whatsapp" placeholder="WhatsApp" />
+      </mat-form-field>
+      <mat-form-field class="material-form" appearance="outline">
+        <mat-label>Observação</mat-label>
+        <textarea
+          matInput
+          formControlName="observation"
+          placeholder="Observação"
+        ></textarea>
+      </mat-form-field>
+    </form>
+    <div class="actions">
+      <button mat-raised-button class="main-button-inverse" mat-dialog-close>
+        Cancelar
+      </button>
+      <button *ngIf="!isDisabled" mat-raised-button class="main-button" (click)="save()">Salvar</button>
+      <button *ngIf="isDisabled" mat-raised-button class="main-button" (click)="editable()">Editar</button>
+    </div>
+  </div>
 </mat-dialog-content>

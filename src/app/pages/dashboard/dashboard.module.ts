@@ -7,6 +7,7 @@ import { DashboardComponent } from './dashboard.component';
 import { MatCardModule } from '@angular/material/card';
 import { LawSuitModule } from '../lawsuit/lawsuit.module';
 import { ContactsModule } from '../contacts/contacts.module';
+import { AuthGuard } from 'src/app/common/services/authentication/auth-guard';
 
 @NgModule({
   imports: [
@@ -16,8 +17,9 @@ import { ContactsModule } from '../contacts/contacts.module';
     HttpClientModule,
     MatCardModule,
     LawSuitModule,
-    ContactsModule
+    ContactsModule,
   ],
+  providers: [AuthGuard],
   declarations: [DashboardComponent],
 })
 export class DashboardModule {}

@@ -8,6 +8,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatMenuModule } from '@angular/material/menu';
+import { AuthGuard } from 'src/app/common/services/authentication/auth-guard';
 @NgModule({
   imports: [
     CommonModule,
@@ -20,6 +21,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatMenuModule,
   ],
   declarations: [LawsuitComponent],
+  providers: [AuthGuard],
   exports: [LawsuitComponent],
 })
 export class LawSuitModule {}

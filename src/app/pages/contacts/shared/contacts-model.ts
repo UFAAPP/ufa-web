@@ -3,6 +3,7 @@ export interface IContact {
   name: string;
   email: string;
   phone: string;
-  whatspp: string;
-  avatar: string;
+  whatsapp: string;
+  social_number: string;
+  observation: string;
 }
