@@ -3,7 +3,7 @@
 export const environment = {
   production: false,
   APIs: {
-    URL: 'https://apigateway-tst.nexxera.com',
+    URL: 'https://law-order-api.herokuapp.com',
     BRASILAPI: 'https://brasilapi.com.br/api/cep/v1',
   },
 };

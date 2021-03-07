@@ -12,6 +12,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ContactDetailComponent } from './components/contact-detail/contact-detail.component';
+import { AvatarModule } from 'ngx-avatar';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   imports: [
@@ -26,7 +28,9 @@ import { ContactDetailComponent } from './components/contact-detail/contact-deta
     MatButtonModule,
     MatListModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    AvatarModule,
+    MatIconModule,
   ],
   declarations: [ContactsComponent, ContactDetailComponent],
   exports: [ContactsComponent],

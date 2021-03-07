@@ -119,3 +119,18 @@ button {
     }
   }
 }
+.close-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+.mat-dialog-container {
+  padding: 0 !important;
+}
+button.main-button {
+  background-color: var(--primary-color) !important;
+  color: white;
+}
+button.main-button-inverse {
+  border: 1px solid var(--primary-color) !important;
+  color: var(--primary-color);
+}

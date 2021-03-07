@@ -22,15 +22,14 @@
         *ngFor="let contact of contactList"
         (click)="openDetails(contact)"
         ><mat-card>
-          <mat-card-header>
-            <div
-              mat-card-avatar
-              class="header-image"
-              style="background-image: url('{{ contact.avatar }}')"
-            ></div>
-            <mat-card-title>{{ contact.name }}</mat-card-title>
-            <mat-card-subtitle>{{ contact.email }}</mat-card-subtitle>
-          </mat-card-header>
+          <div class="left">
+            <ngx-avatar [name]="contact.name"></ngx-avatar>
+            <mat-card-header>
+              <mat-card-title>{{ contact.name }}</mat-card-title>
+              <mat-card-subtitle>{{ contact.email }}</mat-card-subtitle>
+            </mat-card-header>
+          </div>
+
           <mat-card-content>
             {{ contact.phone }}
           </mat-card-content>

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
 import { ContactService } from './shared/contact.service';
 import { IContact } from './shared/contacts-model';
 import { MatDialog } from '@angular/material/dialog';
 import { ContactDetailComponent } from './components/contact-detail/contact-detail.component';
+import { AvatarService } from 'ngx-avatar';
 
 @Component({
   selector: 'app-contacts',
@@ -14,7 +15,8 @@ export class ContactsComponent implements OnInit {
   contactList: IContact[] = [];
   constructor(
     private contactService: ContactService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private elRef: ElementRef
   ) {}
 
   ngOnInit(): void {
@@ -22,11 +24,14 @@ export class ContactsComponent implements OnInit {
       .getContacts()
       .then((CONTACTLIST) => (this.contactList = CONTACTLIST));
   }
+
   openDetails(contact: IContact) {
     this.dialog.open(ContactDetailComponent, {
       data: {
-        contact,
+        ...contact,
       },
+      width: '400px',
+      height: 'auto',
     });
   }
 }

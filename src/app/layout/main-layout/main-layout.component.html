@@ -16,15 +16,7 @@
           </mat-list-item>
         </mat-list>
         <button mat-icon-button [matMenuTriggerFor]="menu">
-          <mat-card-header>
-            <div
-              mat-card-avatar
-              class="avatar"
-              style="
-                background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-              "
-            ></div
-          ></mat-card-header>
+          <ngx-avatar name="John Doe"></ngx-avatar>
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item (click)="navigateTo('/perfil')">

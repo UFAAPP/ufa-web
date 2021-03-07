@@ -17,12 +17,8 @@
         border: none;
         box-shadow: none;
         background: var(--background-color);
-        mat-card-header {
-          display: block;
-          .avatar {
-            background-size: cover;
-            cursor: pointer;
-          }
+        button {
+          cursor: pointer;
         }
         mat-list.nav-menu {
           display: flex;
@@ -68,8 +64,8 @@
             }
           }
         }
-        button{
-          &:focus{
+        button {
+          &:focus {
             outline: 0;
           }
         }
