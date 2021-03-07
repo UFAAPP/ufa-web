@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { IContact } from '../../shared/contacts-model';
+import { Contact } from '../../shared/contacts-model';
 
 @Component({
   selector: 'app-contact-detail',
@@ -12,7 +12,7 @@ export class ContactDetailComponent implements OnInit {
   contactFormGroup: FormGroup;
   isDisabled = true;
   constructor(
-    @Inject(MAT_DIALOG_DATA) public contact: IContact,
+    @Inject(MAT_DIALOG_DATA) public contact: Contact,
     private _formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<ContactDetailComponent>
   ) {

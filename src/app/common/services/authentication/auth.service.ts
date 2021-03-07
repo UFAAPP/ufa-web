@@ -5,8 +5,8 @@ import { StorageService } from '../storage/storage.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
-import { Credentials, User } from './auth.models';
+import { map, switchMap, tap } from 'rxjs/operators';
+import { Credentials, RefreshToken, User } from './auth.models';
 
 @Injectable()
 export class AuthService {
@@ -50,27 +50,25 @@ export class AuthService {
   }
 
   login(credentials: Credentials): Observable<User> {
-    return this.httpClient
-      .post<User>(`${this.apiUrl}/auth/get-token`, credentials)
-      .pipe(
-        map((user) => {
-          if (user && user.access_token) {
-            this.storageService.currentUser = user;
-          }
-          return user;
-        })
-      );
-  }
-  refreshToken() {
-    return this.httpClient
-      .post<any>(`${this.apiUrl}/auth/refresh-token/`, {
-        refreshToken: this.storageService.refreshToken,
+    return this.httpClient.post<User>(`${this.apiUrl}/auth/`, credentials).pipe(
+      map((user) => {
+        if (user && user.access_token) {
+          this.storageService.currentUser = user;
+        }
+        return user;
       })
-      .pipe(
-        tap((token: string) => {
-          this.storeRefreshToken(token);
-        })
-      );
+    );
+  }
+  refreshToken(): Observable<any> {
+    const data = {
+      refresh_token: this.storageService.currentUser.refresh_token,
+    };
+    return this.httpClient.put<any>(`${this.apiUrl}/auth`, data).pipe(
+      tap((token: RefreshToken) => {
+        console.log(token)
+        this.storeRefreshToken(token.access_token);
+      })
+    );
   }
   storeRefreshToken(token: string): void {
     let user = this.storageService.currentUser;

@@ -28,3 +28,6 @@ export interface LoginError {
 export enum LoginErrors {
   WRONG_CREDENTIALS = 'user not found or wrong password',
 }
+export interface RefreshToken {
+  access_token: string;
+}

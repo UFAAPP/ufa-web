@@ -1,0 +1,52 @@
+mat-dialog-content {
+  padding: 0;
+  margin: -24px -24px;
+  height: 100%;
+  display: contents;
+  button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    &:hover {
+      background: transparent;
+    }
+    &:focus {
+      background: none;
+    }
+  }
+
+  .top {
+    background: #5f8fdf;
+    margin-bottom: 50px;
+    position: relative;
+    height: 70px;
+    ngx-avatar {
+      left: 160px;
+      position: absolute;
+      top: 30px;
+    }
+  }
+  .bottom {
+    padding-left: 40px;
+    padding-right: 40px;
+    height: 100%;
+    .material-form {
+      width: 100%;
+    }
+  }
+  .actions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px 20px;
+    button{
+      width: 100px;
+      height: 45px;
+      &:first-child{
+        margin-right: 15px;
+      }
+    }
+  }
+}

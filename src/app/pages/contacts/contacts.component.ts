@@ -1,9 +1,10 @@
-import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
-import { ContactService } from './shared/contact.service';
-import { IContact } from './shared/contacts-model';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { AuthService } from 'src/app/common/services/authentication/auth.service';
 import { ContactDetailComponent } from './components/contact-detail/contact-detail.component';
-import { AvatarService } from 'ngx-avatar';
+import { ContactNewComponent } from './components/contact-new/contact-new.component';
+import { ContactService } from './shared/contact.service';
+import { Contact } from './shared/contacts-model';
 
 @Component({
   selector: 'app-contacts',
@@ -12,20 +13,26 @@ import { AvatarService } from 'ngx-avatar';
 })
 export class ContactsComponent implements OnInit {
   count = 20;
-  contactList: IContact[] = [];
+  contactList: Contact[] = [];
   constructor(
     private contactService: ContactService,
+    private authService: AuthService,
     public dialog: MatDialog,
-    private elRef: ElementRef
   ) {}
 
   ngOnInit(): void {
+    this.authService.refreshToken();
     this.contactService
       .getContacts()
       .subscribe((CONTACTLIST) => (this.contactList = CONTACTLIST));
   }
-
-  openDetails(contact: IContact) {
+  openNew() {
+    this.dialog.open(ContactNewComponent, {
+      width: '400px',
+      height: 'auto',
+    });
+  }
+  openDetails(contact: Contact) {
     this.dialog.open(ContactDetailComponent, {
       data: {
         ...contact,

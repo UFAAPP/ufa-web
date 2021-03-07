@@ -1,0 +1,111 @@
+<mat-dialog-content>
+  <div class="top">
+    <div class="close-wrapper">
+      <button mat-button mat-dialog-close>
+        <span class="material-icons"> close </span>
+      </button>
+    </div>
+    <ngx-avatar
+      [name]="contactFormGroup.controls['name'].value"
+      [size]="80"
+    ></ngx-avatar>
+  </div>
+  <div class="bottom">
+    <form [formGroup]="contactFormGroup">
+      <mat-form-field class="material-form" appearance="outline">
+        <mat-label>Nome</mat-label>
+        <input
+          matInput
+          formControlName="name"
+          placeholder="Nome completo"
+          required
+        />
+        <mat-error>
+          <p *ngIf="contactFormGroup.controls['name'].hasError('required')">
+            Nome é um campo obrigatório
+          </p></mat-error
+        >
+      </mat-form-field>
+      <mat-form-field class="material-form" appearance="outline">
+        <mat-label>CPF</mat-label>
+        <input
+          matInput
+          formControlName="social_number"
+          placeholder="CPF"
+          required
+          mask="000.000.000-00"
+        />
+        <mat-error>
+          <p
+            *ngIf="
+              contactFormGroup.controls['social_number'].hasError('required')
+            "
+          >
+            CPF é um campo obrigatório
+          </p>
+          <p
+            *ngIf="
+              contactFormGroup.controls['social_number'].hasError('invalidCpf')
+            "
+          >
+            CPF inválido.
+          </p></mat-error
+        >
+      </mat-form-field>
+      <mat-form-field class="material-form" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" placeholder="Email" required />
+        <mat-error>
+          <p *ngIf="contactFormGroup.controls['email'].hasError('required')">
+            Email é um campo obrigatório
+          </p>
+          <p
+            *ngIf="contactFormGroup.controls['email'].hasError('invalidEmail')"
+          >
+            Email inválido inválido.
+          </p>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="material-form" appearance="outline">
+        <mat-label>Telefone</mat-label>
+        <input
+          matInput
+          formControlName="phone"
+          placeholder="Telefone"
+          required
+          mask="(00)00000-0000 || (00) 0000-0000"
+        />
+        <mat-error>
+          <p *ngIf="contactFormGroup.controls['phone'].hasError('required')">
+            Telefone é um campo obrigatório
+          </p></mat-error
+        >
+      </mat-form-field>
+      <mat-form-field class="material-form" appearance="outline">
+        <mat-label>WhatsApp</mat-label>
+        <input
+          matInput
+          formControlName="whatsapp"
+          placeholder="WhatsApp"
+          mask="(00)00000-0000"
+        />
+      </mat-form-field>
+      <mat-form-field class="material-form" appearance="outline">
+        <mat-label>Observação</mat-label>
+        <textarea
+          matInput
+          formControlName="observation"
+          placeholder="Observação"
+        ></textarea>
+      </mat-form-field>
+    </form>
+    <div class="actions">
+      <button mat-raised-button class="main-button-inverse" mat-dialog-close>
+        Cancelar
+      </button>
+      <button mat-raised-button class="main-button" (click)="save()">
+        Salvar
+      </button>
+    </div>
+  </div>
+</mat-dialog-content>

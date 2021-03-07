@@ -1,6 +1,6 @@
-import { IContact } from './contacts-model';
+import { Contact } from './contacts-model';
 
-export const CONTACTLIST: IContact[] = [
+export const CONTACTLIST: Contact[] = [
   {
     name: 'Donaugh Barkley',
     email: 'dbarkley0@csmonitor.com',
