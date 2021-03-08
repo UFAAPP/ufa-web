@@ -1,3 +1,4 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/common/services/authentication/auth.models';
@@ -15,9 +16,11 @@ export class ProfileComponent implements OnInit {
   companyFormGroup: FormGroup;
   data: User;
   isDisabled = true;
+  loading = false;
   constructor(
-    private storageService: StorageService,
-    private formBuilder: FormBuilder
+    public storageService: StorageService,
+    private formBuilder: FormBuilder,
+    private authService: AuthService
   ) {
     this.data = this.storageService.currentUser;
     this.profileFormGroup = this.formBuilder.group({
@@ -58,6 +61,24 @@ export class ProfileComponent implements OnInit {
   }
   save(): void {
     if (this.profileFormGroup.dirty || this.companyFormGroup.dirty) {
+      this.loading = true;
+      this.authService
+        .patchUser(this.profileFormGroup.value)
+        .subscribe((USER) => {
+          let data = this.storageService.currentUser;
+
+          this.authService
+            .patchCompany(this.companyFormGroup.value)
+            .subscribe((COMPANY) => {
+              USER.company = COMPANY;
+              USER.id = data.user.id;
+              data.user = USER;
+              this.storageService.currentUser = data;
+            })
+            .add(() => {
+              this.loading = false;
+            });
+        });
       this.editable();
     }
   }
