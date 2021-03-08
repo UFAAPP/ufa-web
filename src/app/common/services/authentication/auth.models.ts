@@ -6,15 +6,17 @@ export interface Credentials {
 export interface User {
   access_token: string;
   refresh_token: string;
-  user: {
-    first_name: string;
-    last_name: string;
-    email: string;
-    is_staff: boolean;
-    is_active: boolean;
-    social_number: string;
-    company: Company;
-  };
+  user: UserInfo;
+}
+export interface UserInfo {
+  first_name: string;
+  last_name: string;
+  email: string;
+  is_staff: boolean;
+  is_active: boolean;
+  social_number: string;
+  company: Company;
+  id?: number;
 }
 export interface Company {
   id: number;

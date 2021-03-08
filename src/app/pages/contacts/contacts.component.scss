@@ -6,8 +6,8 @@
   .left {
     display: flex;
     align-items: center;
-    width: 50%;
     height: 100%;
+    flex: 1;
     .card {
       display: flex;
       flex-direction: column;

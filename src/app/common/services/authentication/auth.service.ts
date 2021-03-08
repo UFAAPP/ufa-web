@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
-import jwtDecode, { JwtPayload } from 'jwt-decode';
-import { Router } from '@angular/router';
-import { StorageService } from '../storage/storage.service';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import jwtDecode, { JwtPayload } from 'jwt-decode';
 import { Observable } from 'rxjs';
-import { map, switchMap, tap } from 'rxjs/operators';
-import { Credentials, RefreshToken, User } from './auth.models';
+import { map, take, tap } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+import { StorageService } from '../storage/storage.service';
+import { Company, Credentials, RefreshToken, User, UserInfo } from './auth.models';
 
 @Injectable()
 export class AuthService {
@@ -73,5 +73,17 @@ export class AuthService {
     let user = this.storageService.currentUser;
     user.access_token = token;
     this.storageService.currentUser = user;
+  }
+  patchUser(user: UserInfo): Observable<UserInfo> {
+    const id = this.storageService.currentUser.user.id
+    return this.httpClient
+      .patch<UserInfo>(`${this.apiUrl}/users/${id}/`, user)
+      .pipe(take(1));
+  }
+  patchCompany(company: Company): Observable<Company> {
+    const id = this.storageService.currentUser.user.company
+    return this.httpClient
+      .patch<Company>(`${this.apiUrl}/companies/${id}/`, company)
+      .pipe(take(1));
   }
 }

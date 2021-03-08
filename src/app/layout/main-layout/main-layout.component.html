@@ -16,7 +16,7 @@
           </mat-list-item>
         </mat-list>
         <button mat-icon-button [matMenuTriggerFor]="menu">
-          <ngx-avatar name="{{companyName}}"></ngx-avatar>
+          <ngx-avatar name="{{companyName}}" [initialsSize]="2"></ngx-avatar>
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item (click)="navigateTo('/perfil')">
