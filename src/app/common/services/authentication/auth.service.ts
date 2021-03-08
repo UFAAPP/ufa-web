@@ -65,7 +65,6 @@ export class AuthService {
     };
     return this.httpClient.put<any>(`${this.apiUrl}/auth`, data).pipe(
       tap((token: RefreshToken) => {
-        console.log(token)
         this.storeRefreshToken(token.access_token);
       })
     );
