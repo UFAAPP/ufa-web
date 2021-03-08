@@ -11,7 +11,7 @@ import { ContactService } from '../../shared/contact.service';
 })
 export class ContactNewComponent implements OnInit {
   contactFormGroup: FormGroup;
-  loading = false;
+  loading = true;
   constructor(
     public dialogRef: MatDialogRef<ContactNewComponent>,
     private _formBuilder: FormBuilder,

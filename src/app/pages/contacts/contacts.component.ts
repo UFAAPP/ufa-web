@@ -29,7 +29,7 @@ export class ContactsComponent implements OnInit {
   openNew() {
     this.dialog.open(ContactNewComponent, {
       width: '400px',
-      height: 'auto',
+      height: '750px',
     });
   }
   openDetails(contact: Contact) {
@@ -38,7 +38,7 @@ export class ContactsComponent implements OnInit {
         ...contact,
       },
       width: '400px',
-      height: 'auto',
+      height: '750px',
     });
   }
 }

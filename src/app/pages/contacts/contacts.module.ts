@@ -17,6 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { AuthGuard } from 'src/app/common/services/authentication/auth-guard';
 import { ContactNewComponent } from './components/contact-new/contact-new.component';
 import { NgxMaskModule } from 'ngx-mask';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   imports: [
@@ -34,6 +35,7 @@ import { NgxMaskModule } from 'ngx-mask';
     MatDialogModule,
     AvatarModule,
     MatIconModule,
+    MatProgressSpinnerModule,
     NgxMaskModule.forRoot(),
   ],
   declarations: [

@@ -57,8 +57,8 @@ export class LoginComponent implements OnInit {
           (login) => {
             this.router.navigateByUrl('/dashboard');
           },
-          (e) => {
-            if (e.error.detail === LoginErrors.WRONG_CREDENTIALS) {
+          (error) => {
+            if (error.status === 403) {
               this.toastr.error('Usuário ou senha incorretos.', 'Ops!');
               return;
             }
