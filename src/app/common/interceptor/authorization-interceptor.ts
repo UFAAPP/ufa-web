@@ -11,6 +11,7 @@ import { StorageService } from '../services/storage/storage.service';
 import { catchError, filter, take, switchMap } from 'rxjs/operators';
 import { AuthService } from '../services/authentication/auth.service';
 import { environment } from 'src/environments/environment';
+import { RefreshToken } from '../services/authentication/auth.models';
 
 @Injectable()
 export class AuthorizationInterceptor implements HttpInterceptor {
@@ -28,8 +29,8 @@ export class AuthorizationInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     const user = this.storageService.currentUser;
-    const urlRequest = request.url;
-    if (user && request.url.match(environment.APIs.URL)) {
+
+    if (user && request.url.toString() !== `${environment.APIs.URL}/auth`) {
       const headers: any = {
         Authorization: `JWT ${user.access_token}`,
       };
@@ -39,8 +40,8 @@ export class AuthorizationInterceptor implements HttpInterceptor {
 
     return next.handle(request).pipe(
       catchError((error) => {
-        if (error instanceof HttpErrorResponse && error.status === 401) {
-          return this.handle401Error(request, next);
+        if (error instanceof HttpErrorResponse && error.status === 403) {
+          return this.handle403Error(request, next);
         } else {
           return throwError(error);
         }
@@ -49,12 +50,6 @@ export class AuthorizationInterceptor implements HttpInterceptor {
   }
 
   setDefaultHeaders(request: HttpRequest<any>, headers: any): void {
-    // headers['Access-Control-Allow-Credentials'] = 'true';
-    // headers['Access-Control-Allow-Methods'] =
-    //   'GET, POST, PATCH, PUT, DELETE, OPTIONS';
-    // headers['Access-Control-Allow-Headers'] =
-    //   'Origin, Content-Type, X-Auth-Token';
-    // headers['Access-Control-Allow-Origin'] = '*';
     if (request.method === 'GET') {
       return;
     }
@@ -67,16 +62,16 @@ export class AuthorizationInterceptor implements HttpInterceptor {
       },
     });
   }
-  private handle401Error(request: HttpRequest<any>, next: HttpHandler) {
+  private handle403Error(request: HttpRequest<any>, next: HttpHandler) {
     if (!this.isRefreshing) {
       this.isRefreshing = true;
       this.refreshTokenSubject.next(null);
-
       return this.authService.refreshToken().pipe(
-        switchMap((token: string) => {
+        switchMap((token: RefreshToken) => {
           this.isRefreshing = false;
-          this.refreshTokenSubject.next(token);
-          return next.handle(this.addToken(request, token));
+          console.log(token.access_token)
+          this.refreshTokenSubject.next(token.access_token);
+          return next.handle(this.addToken(request, token.access_token));
         })
       );
     } else {

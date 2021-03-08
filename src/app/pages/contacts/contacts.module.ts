@@ -15,6 +15,8 @@ import { ContactDetailComponent } from './components/contact-detail/contact-deta
 import { AvatarModule } from 'ngx-avatar';
 import { MatIconModule } from '@angular/material/icon';
 import { AuthGuard } from 'src/app/common/services/authentication/auth-guard';
+import { ContactNewComponent } from './components/contact-new/contact-new.component';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   imports: [
@@ -32,8 +34,13 @@ import { AuthGuard } from 'src/app/common/services/authentication/auth-guard';
     MatDialogModule,
     AvatarModule,
     MatIconModule,
+    NgxMaskModule.forRoot(),
   ],
-  declarations: [ContactsComponent, ContactDetailComponent],
+  declarations: [
+    ContactsComponent,
+    ContactDetailComponent,
+    ContactNewComponent,
+  ],
   providers: [AuthGuard],
   exports: [ContactsComponent],
 })

@@ -58,7 +58,6 @@ export class ProfileComponent implements OnInit {
   }
   save(): void {
     if (this.profileFormGroup.dirty || this.companyFormGroup.dirty) {
-      console.log('save');
       this.editable();
     }
   }

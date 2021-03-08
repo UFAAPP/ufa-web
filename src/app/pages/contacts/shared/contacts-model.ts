@@ -1,4 +1,4 @@
-export interface IContact {
+export interface Contact {
   id?: number;
   name: string;
   email: string;
@@ -6,4 +6,5 @@ export interface IContact {
   whatsapp: string;
   social_number: string;
   observation: string;
+  company: number;
 }
