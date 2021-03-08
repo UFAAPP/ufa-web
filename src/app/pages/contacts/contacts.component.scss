@@ -6,8 +6,7 @@
   .left {
     display: flex;
     align-items: center;
-    height: 100%;
-    flex: 1;
+    width: 50%;
     .card {
       display: flex;
       flex-direction: column;
@@ -16,7 +15,6 @@
       background: #fff;
       box-shadow: 0 3px 6px 0 rgb(40 40 90 / 9%), 0 1px 1px 0 rgb(0 0 0 / 7%);
       padding: 50px;
-      max-width: 400px;
       -webkit-box-sizing: border-box;
       box-sizing: border-box;
       margin-bottom: 15px;
@@ -37,8 +35,9 @@
     }
   }
   .right {
-    width: 50%;
+    width: 60%;
     height: 100%;
+    position: relative;
     mat-list {
       overflow-y: auto;
       overflow-x: hidden;
@@ -56,11 +55,14 @@
           transition: transform 0.2s;
           &:hover {
             transform: scale(
-              1.1
+              1.05
             ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
           }
-          .left {
+          .right-left {
             align-items: end;
+            display: flex;
+            width: 80%;
+            overflow-wrap: break-word;
           }
           mat-card-header {
             display: flex;
@@ -68,9 +70,19 @@
           mat-card-content {
             display: flex;
             align-items: center;
+            justify-content: flex-end;
           }
         }
       }
     }
   }
+}
+.contact-title {
+  font-size: 16px;
+  margin-bottom: 12px;
+  margin-top: 5px;
+}
+.contact-subtitle {
+  font-size: 13px;
+  overflow-wrap: anywhere;
 }

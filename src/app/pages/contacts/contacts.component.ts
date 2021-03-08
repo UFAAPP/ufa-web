@@ -1,6 +1,5 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AuthService } from 'src/app/common/services/authentication/auth.service';
 import { ContactDetailComponent } from './components/contact-detail/contact-detail.component';
 import { ContactNewComponent } from './components/contact-new/contact-new.component';
 import { ContactService } from './shared/contact.service';
@@ -16,29 +15,39 @@ export class ContactsComponent implements OnInit {
   contactList: Contact[] = [];
   constructor(
     private contactService: ContactService,
-    private authService: AuthService,
-    public dialog: MatDialog,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
-    this.authService.refreshToken();
-    this.contactService
-      .getContacts()
-      .subscribe((CONTACTLIST) => (this.contactList = CONTACTLIST));
+    this.getontacts();
   }
   openNew() {
-    this.dialog.open(ContactNewComponent, {
+    const dialogRef = this.dialog.open(ContactNewComponent, {
       width: '400px',
       height: '750px',
     });
+    dialogRef.afterClosed().subscribe((result) => this.getontacts());
+    dialogRef.backdropClick().subscribe((_) => {
+      this.getontacts();
+    });
   }
+
   openDetails(contact: Contact) {
-    this.dialog.open(ContactDetailComponent, {
+    const dialogRef = this.dialog.open(ContactDetailComponent, {
       data: {
         ...contact,
       },
       width: '400px',
       height: '750px',
     });
+    dialogRef.afterClosed().subscribe((result) => this.getontacts());
+    dialogRef.backdropClick().subscribe((_) => {
+      this.getontacts();
+    });
+  }
+  getontacts(): void {
+    this.contactService
+      .getContacts()
+      .subscribe((CONTACTLIST) => (this.contactList = CONTACTLIST));
   }
 }
