@@ -39,4 +39,10 @@ export class LockersComponent implements OnInit {
       this.lockersFull = LOCKERS.filter((locker) => locker.full);
     });
   }
+  onToggle(locker: Locker): void {
+      locker.full = !locker.full;
+      this.lockerService.patchLocker(locker).subscribe(LOCKER =>{
+        this.getLockers();
+      })
+  }
 }

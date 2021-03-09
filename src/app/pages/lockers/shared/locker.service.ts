@@ -22,4 +22,10 @@ export class LockerService {
     locker.company = this.storageService.currentUser.user.company.id;
     return this.httpClient.post<Locker>(`${this.apiUrl}/locker/`, locker);
   }
+  patchLocker(locker: Locker): Observable<Locker> {
+    return this.httpClient.patch<Locker>(
+      `${this.apiUrl}/locker/${locker.id}/`,
+      locker
+    );
+  }
 }

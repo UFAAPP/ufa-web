@@ -12,7 +12,7 @@
           <mat-icon mat-list-icon>folder</mat-icon>
           <div mat-line>{{ locker.number }}</div>
           <div mat-line>{{ locker.updated_at | date }}</div>
-          <mat-slide-toggle [color]="color" [checked]="locker.full">
+          <mat-slide-toggle [color]="color" [checked]="locker.full" (change)="onToggle(locker)">
             Cheia
           </mat-slide-toggle>
         </mat-list-item></mat-list
@@ -24,7 +24,7 @@
           <mat-icon mat-list-icon>folder</mat-icon>
           <div mat-line>{{ locker.number }}</div>
           <div mat-line>{{ locker.updated_at | date }}</div>
-          <mat-slide-toggle [color]="color" [checked]="locker.full">
+          <mat-slide-toggle [color]="color" [checked]="locker.full" (change)="onToggle(locker)">
             Cheia
           </mat-slide-toggle>
         </mat-list-item></mat-list
