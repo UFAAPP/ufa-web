@@ -131,6 +131,10 @@ button {
 .mat-dialog-container {
   padding: 0 !important;
 }
+button.main-button-fab{
+  background: var(--primary-color) !important;
+  color: white;
+}
 button.main-button {
   background: var(--primary-color) !important;
   color: white;

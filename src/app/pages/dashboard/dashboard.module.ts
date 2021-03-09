@@ -8,6 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { LawSuitModule } from '../lawsuit/lawsuit.module';
 import { ContactsModule } from '../contacts/contacts.module';
 import { AuthGuard } from 'src/app/common/services/authentication/auth-guard';
+import { LockersModule } from '../lockers/lockers.module';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { AuthGuard } from 'src/app/common/services/authentication/auth-guard';
     MatCardModule,
     LawSuitModule,
     ContactsModule,
+    LockersModule,
   ],
   providers: [AuthGuard],
   declarations: [DashboardComponent],

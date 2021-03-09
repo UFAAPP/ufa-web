@@ -7,7 +7,7 @@
         <span matPrefix class="material-icons"> search </span>
         <input type="text" matInput placeholder="Ex.: José"  (input)="filter()" [(ngModel)]="searchName"/>
         <mat-hint align="end"
-          ><strong>{{ count }}</strong> contatos</mat-hint
+          ><strong>{{ filteredContact.length }}</strong> contatos</mat-hint
         >
       </mat-form-field>
 

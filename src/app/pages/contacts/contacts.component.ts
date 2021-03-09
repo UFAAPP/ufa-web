@@ -14,7 +14,6 @@ import { Contact } from './shared/contacts-model';
   styleUrls: ['./contacts.component.scss'],
 })
 export class ContactsComponent implements OnInit {
-  count = 20;
   contactList: Contact[] = [];
   filteredContact: Contact[] = [];
   searchName = '';

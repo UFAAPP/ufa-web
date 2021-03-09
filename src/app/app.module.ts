@@ -11,6 +11,8 @@ import { DashboardModule } from './pages/dashboard/dashboard.module';
 import { LawSuitModule } from './pages/lawsuit/lawsuit.module';
 import { LoginModule } from './pages/login/login.module';
 import { ProfileModule } from './pages/profile/profile.module';
+import { LockersComponent } from './pages/lockers/lockers.component';
+import { LockersModule } from './pages/lockers/lockers.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,6 +26,7 @@ import { ProfileModule } from './pages/profile/profile.module';
     ContactsModule,
     LawSuitModule,
     ProfileModule,
+    LockersModule,
   ],
   providers: [
     {

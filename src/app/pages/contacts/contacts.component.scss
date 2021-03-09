@@ -52,8 +52,9 @@
           justify-content: space-between;
           width: 100%;
           cursor: pointer;
-          transition: transform 0.2s;
+          transition: transform 0.2s background-color .6s;
           &:hover {
+            background-color: #fff;
             transform: scale(
               1.05
             ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */

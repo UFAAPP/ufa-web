@@ -20,7 +20,6 @@ export class LawsuitComponent implements OnInit, AfterViewInit {
     'code_number',
     'client',
     'descriptor',
-    'identifier',
     'locker',
     'actions',
   ];
