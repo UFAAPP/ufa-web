@@ -16,6 +16,10 @@ import { MatPaginatorI18nService } from 'src/app/common/mat-paginator-i18n.servi
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { NewLawsuitComponent } from './components/new-lawsuit/new-lawsuit.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { NgxMaskModule } from 'ngx-mask';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   imports: [
     CommonModule,
@@ -30,8 +34,11 @@ import { MatInputModule } from '@angular/material/input';
     ReactiveFormsModule,
     MatInputModule,
     MatFormFieldModule,
+    MatDialogModule,
+    NgxMaskModule.forRoot(),
+    MatSelectModule,
   ],
-  declarations: [LawsuitComponent],
+  declarations: [LawsuitComponent, NewLawsuitComponent],
   providers: [
     AuthGuard,
     { provide: MatPaginatorIntl, useValue: MatPaginatorI18nService() }, // Here

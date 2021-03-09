@@ -12,7 +12,7 @@
     ></ngx-avatar>
   </div>
   <div class="bottom">
-    <form [formGroup]="contactFormGroup">
+    <form [formGroup]="contactFormGroup" id="form" (click)="save()">
       <mat-form-field class="material-form" appearance="outline">
         <mat-label>Nome</mat-label>
         <input
@@ -104,7 +104,7 @@
       <button  class="main-button-inverse" mat-dialog-close>
         Cancelar
       </button>
-      <button  class="main-button" (click)="save()">
+      <button  class="main-button" form="form">
         Salvar
       </button>
     </div>

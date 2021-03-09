@@ -48,12 +48,5 @@ export class ContactNewComponent implements OnInit {
         });
       return;
     }
-    this.callValidator();
-  }
-  callValidator(): void {
-    this.contactFormGroup.controls['name'].markAsTouched();
-    this.contactFormGroup.controls['social_number'].markAsTouched();
-    this.contactFormGroup.controls['email'].markAsTouched();
-    this.contactFormGroup.controls['phone'].markAsTouched();
   }
 }

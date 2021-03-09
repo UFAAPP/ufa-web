@@ -10,21 +10,24 @@ mat-dialog-content {
   .content {
     padding: 0 20px 20px;
     form {
-      display: flex;
-      margin-top: 20px;
-      align-items: center;
-      mat-form-field {
-        &:first-child {
-          margin-right: 20px;
+      .form-wrapper {
+        display: flex;
+        margin-top: 20px;
+        align-items: center;
+        mat-form-field {
+          &:first-child {
+            margin-right: 20px;
+          }
         }
-      }
-      mat-slide-toggle {
-        margin-bottom: 25.5px;
+        mat-slide-toggle {
+          margin-bottom: 25.5px;
+        }
       }
     }
     .actions {
       display: flex;
       justify-content: center;
+      margin-top: 20px;
       button {
         &:first-child {
           margin-right: 20px;

@@ -12,7 +12,7 @@
         #input
       />
     </mat-form-field>
-    <button class="main-button">Adicionar Processo</button>
+    <button class="main-button" (click)="openNew()">Adicionar Processo</button>
   </div>
   <div class="table-container mat-elevation-z8">
     <div class="loading-shade" *ngIf="isLoadingResults">

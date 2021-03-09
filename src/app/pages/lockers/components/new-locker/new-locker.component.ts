@@ -23,27 +23,29 @@ export class NewLockerComponent implements OnInit {
   ) {
     this.lockerFormGroup = this.formBuilder.group({
       number: ['', [Validators.required]],
-      full: [false, [Validators.required]],
+      full: false,
     });
   }
 
   ngOnInit(): void {}
   save(): void {
-    this.loading = true;
-    this.lockerService
-      .setLocker(this.lockerFormGroup.value)
-      .subscribe(
-        (LOCKER) => console.log(LOCKER),
-        (error) => {
-          console.log(error);
-          this.toastr.error(
-            'Houve algum problema inesperado, tente novamente mais tarde'
-          );
-        }
-      )
-      .add(() => {
-        this.loading = false;
-        this.dialogRef.close();
-      });
+    if (this.lockerFormGroup.valid) {
+      this.loading = true;
+      this.lockerService
+        .setLocker(this.lockerFormGroup.value)
+        .subscribe(
+          (LOCKER) => console.log(LOCKER),
+          (error) => {
+            console.log(error);
+            this.toastr.error(
+              'Houve algum problema inesperado, tente novamente mais tarde'
+            );
+          }
+        )
+        .add(() => {
+          this.loading = false;
+          this.dialogRef.close();
+        });
+    }
   }
 }

@@ -27,6 +27,7 @@ export class LockersComponent implements OnInit {
   openNew() {
     const dialogRef = this.dialog.open(NewLockerComponent, {
       width: 'auto',
+      height: 'auto',
     });
     dialogRef.afterClosed().subscribe((result) => this.getLockers());
     dialogRef.backdropClick().subscribe((_) => {
@@ -40,9 +41,9 @@ export class LockersComponent implements OnInit {
     });
   }
   onToggle(locker: Locker): void {
-      locker.full = !locker.full;
-      this.lockerService.patchLocker(locker).subscribe(LOCKER =>{
-        this.getLockers();
-      })
+    locker.full = !locker.full;
+    this.lockerService.patchLocker(locker).subscribe((LOCKER) => {
+      this.getLockers();
+    });
   }
 }

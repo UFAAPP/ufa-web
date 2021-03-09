@@ -15,7 +15,7 @@
     ></ngx-avatar>
   </div>
   <div class="bottom">
-    <form [formGroup]="contactFormGroup">
+    <form [formGroup]="contactFormGroup" id="form" (ngSubmit)="save()">
       <mat-form-field class="material-form" appearance="outline">
         <mat-label>Nome</mat-label>
         <input
@@ -135,7 +135,7 @@
         *ngIf="!isDisabled"
         
         class="main-button"
-        (click)="save()"
+        form="form"
       >
         Salvar
       </button>

@@ -11,10 +11,10 @@ export class LawsuitService {
   apiUrl = environment.APIs.URL;
   constructor(private httpClient: HttpClient) {}
 
-  // getLawSuits(): Observable<DataLawSuit> {
-  //   return of(DATALAWSUIT);
-  // }
   getLawSuits(): Observable<LawSuit[]> {
     return this.httpClient.get<LawSuit[]>(`${this.apiUrl}/lawsuit/`);
+  }
+  postLawSuits(lawsuit: LawSuit): Observable<LawSuit> {
+    return this.httpClient.post<LawSuit>(`${this.apiUrl}/lawsuit/`, lawsuit);
   }
 }

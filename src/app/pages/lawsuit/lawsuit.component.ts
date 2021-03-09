@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { merge, Observable, of as observableOf } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
+import { NewLawsuitComponent } from './components/new-lawsuit/new-lawsuit.component';
 import { LawSuit } from './shared/lawsuit-model';
 import { LawsuitService } from './shared/lawsuit.service';
 
@@ -32,7 +34,10 @@ export class LawsuitComponent implements OnInit, AfterViewInit {
   pageSizeOptions: number[] = [5, 10, 25, 100];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  constructor(private lawsuitService: LawsuitService) {
+  constructor(
+    private lawsuitService: LawsuitService,
+    public dialog: MatDialog
+  ) {
     this.dataSource = new MatTableDataSource<LawSuit>();
   }
 
@@ -68,5 +73,14 @@ export class LawsuitComponent implements OnInit, AfterViewInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  openNew() {
+    const dialogRef = this.dialog.open(NewLawsuitComponent, {
+      width: 'auto',
+    });
+    dialogRef.afterClosed().subscribe((result) => this.fetchTable());
+    dialogRef.backdropClick().subscribe((_) => {
+      this.fetchTable();
+    });
   }
 }

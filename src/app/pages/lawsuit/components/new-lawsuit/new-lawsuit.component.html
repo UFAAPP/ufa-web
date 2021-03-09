@@ -1,0 +1,29 @@
+<mat-dialog-content>
+  <div class="loading-shade" *ngIf="loading">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div class="close-wrapper">
+    <button mat-button mat-dialog-close>
+      <span class="material-icons"> close </span>
+    </button>
+  </div>
+
+  <div class="content">
+    <form [formGroup]="lwaSuitFormGroup">
+      <mat-form-field class="material-form" appearance="outline">
+        <mat-label>Distrito</mat-label>
+        <input
+          matInput
+          formControlName="district"
+          placeholder="Distrito"
+          required
+        />
+        <mat-error>
+          <p *ngIf="lwaSuitFormGroup.controls['district'].hasError('required')">
+            Distrito é um campo obrigatório
+          </p></mat-error
+        >
+      </mat-form-field>
+    </form>
+  </div></mat-dialog-content
+>

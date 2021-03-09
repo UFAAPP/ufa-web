@@ -2,35 +2,39 @@
   <div class="loading-shade" *ngIf="loading">
     <mat-spinner></mat-spinner>
   </div>
-    <div class="close-wrapper">
-      <button mat-button mat-dialog-close>
-        <span class="material-icons"> close </span>
-      </button>
-    </div>
+  <div class="close-wrapper">
+    <button mat-button mat-dialog-close>
+      <span class="material-icons"> close </span>
+    </button>
+  </div>
 
   <div class="content">
     <h3>Adicionar Gaveta</h3>
-    <form [formGroup]="lockerFormGroup">
-      <mat-form-field class="material-form" appearance="outline">
-        <mat-label>Número</mat-label>
-        <input
-          matInput
-          formControlName="number"
-          placeholder="Nome completo"
-          required
-          mask="0{8}"
-        />
-        <mat-error>
-          <p *ngIf="lockerFormGroup.controls['number'].hasError('required')">
-            Número é um campo obrigatório
-          </p></mat-error
+    <form [formGroup]="lockerFormGroup" onsubmit="save()">
+      <div class="form-wrapper">
+        <mat-form-field class="material-form" appearance="outline">
+          <mat-label>Número</mat-label>
+          <input
+            matInput
+            formControlName="number"
+            placeholder="Nome completo"
+            required
+            mask="0{8}"
+          />
+          <mat-error>
+            <p *ngIf="lockerFormGroup.controls['number'].hasError('required')">
+              Número é um campo obrigatório
+            </p></mat-error
+          >
+        </mat-form-field>
+        <mat-slide-toggle [color]="color" formControlName="full"
+          >Cheio</mat-slide-toggle
         >
-      </mat-form-field>
-      <mat-slide-toggle [color]="color" formControlName="full">Cheio</mat-slide-toggle>
+      </div>
+      <div class="actions">
+        <button mat-dialog-close class="main-button-inverse">Cancelar</button>
+        <button type="submit" class="main-button">Salvar</button>
+      </div>
     </form>
-    <div class="actions">
-      <button mat-dialog-close class="main-button-inverse">Cancelar</button>
-      <button (click)="save()" class="main-button">Salvar</button>
-    </div>
   </div>
 </mat-dialog-content>
