@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
+import { startWith, map } from 'rxjs/operators';
 import { ContactDetailComponent } from './components/contact-detail/contact-detail.component';
 import { ContactNewComponent } from './components/contact-new/contact-new.component';
 import { ContactService } from './shared/contact.service';
@@ -13,6 +16,8 @@ import { Contact } from './shared/contacts-model';
 export class ContactsComponent implements OnInit {
   count = 20;
   contactList: Contact[] = [];
+  filteredContact: Contact[] = [];
+  searchName = '';
   constructor(
     private contactService: ContactService,
     public dialog: MatDialog
@@ -20,6 +25,11 @@ export class ContactsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getontacts();
+  }
+  filter(): void {
+    this.filteredContact = this.contactList.filter((contact) =>
+      contact.name.toLowerCase().match(this.searchName.toLocaleLowerCase())
+    );
   }
   openNew() {
     const dialogRef = this.dialog.open(ContactNewComponent, {

@@ -5,7 +5,7 @@
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Procurar contato</mat-label>
         <span matPrefix class="material-icons"> search </span>
-        <input type="text" matInput placeholder="Ex.: José" />
+        <input type="text" matInput placeholder="Ex.: José"  (input)="filter()" [(ngModel)]="searchName"/>
         <mat-hint align="end"
           ><strong>{{ count }}</strong> contatos</mat-hint
         >
@@ -17,9 +17,32 @@
     </div>
   </div>
   <div class="right">
-    <mat-list>
+    <mat-list *ngIf="!searchName">
       <mat-list-item
         *ngFor="let contact of contactList"
+        (click)="openDetails(contact)"
+        ><mat-card>
+          <div class="right-left">
+            <ngx-avatar [name]="contact.name" [initialsSize]="2"></ngx-avatar>
+            <mat-card-header>
+              <mat-card-title class="contact-title">{{
+                contact.name
+              }}</mat-card-title>
+              <mat-card-subtitle class="contact-subtitle">{{
+                contact.email
+              }}</mat-card-subtitle>
+            </mat-card-header>
+          </div>
+
+          <mat-card-content>
+            {{ contact.phone | mask: '(00) 0000-0000 || (00) 00000-0000' }}
+          </mat-card-content>
+        </mat-card>
+      </mat-list-item>
+    </mat-list>
+    <mat-list *ngIf="searchName">
+      <mat-list-item
+        *ngFor="let contact of filteredContact"
         (click)="openDetails(contact)"
         ><mat-card>
           <div class="right-left">

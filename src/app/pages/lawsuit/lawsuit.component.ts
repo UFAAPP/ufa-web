@@ -4,39 +4,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { merge, Observable, of as observableOf } from 'rxjs';
-import { startWith, switchMap, map, catchError } from 'rxjs/operators';
-import { ILawSuit } from './shared/lawsuit-model';
+import { catchError, map, startWith, switchMap } from 'rxjs/operators';
+import { LawSuit } from './shared/lawsuit-model';
 import { LawsuitService } from './shared/lawsuit.service';
-
-export interface GithubApi {
-  items: GithubIssue[];
-  total_count: number;
-}
-
-export interface GithubIssue {
-  created_at: string;
-  number: string;
-  state: string;
-  title: string;
-}
-
-/** An example database that the data source uses to retrieve data for the table. */
-export class ExampleHttpDatabase {
-  constructor(private httpClient: HttpClient) {}
-
-  getRepoIssues(
-    sort: string,
-    order: string,
-    page: number
-  ): Observable<GithubApi> {
-    const href = 'https://api.github.com/search/issues';
-    const requestUrl = `${href}?q=repo:angular/components&sort=${sort}&order=${order}&page=${
-      page + 1
-    }`;
-
-    return this.httpClient.get<GithubApi>(requestUrl);
-  }
-}
 
 @Component({
   selector: 'app-lawsuit',
@@ -52,17 +22,19 @@ export class LawsuitComponent implements OnInit, AfterViewInit {
     'descriptor',
     'identifier',
     'locker',
-    'actions'
+    'actions',
   ];
 
-  dataSource: MatTableDataSource<ILawSuit>;
+  dataSource: MatTableDataSource<LawSuit>;
   resultsLength = 0;
   isLoadingResults = true;
-
+  length = 0;
+  pageSize = 5;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor(private lawsuitService: LawsuitService) {
-    this.dataSource = new MatTableDataSource<ILawSuit>();
+    this.dataSource = new MatTableDataSource<LawSuit>();
   }
 
   ngOnInit(): void {}
@@ -70,7 +42,6 @@ export class LawsuitComponent implements OnInit, AfterViewInit {
     this.fetchTable();
   }
   fetchTable() {
-
     merge()
       .pipe(
         startWith({}),
@@ -78,18 +49,25 @@ export class LawsuitComponent implements OnInit, AfterViewInit {
           this.isLoadingResults = true;
           return this.lawsuitService.getLawSuits();
         }),
-        map((DATALAWSUIT) => {
+        map((LAWSUIT) => {
           // Flip flag to show that loading has finished.
           this.isLoadingResults = false;
-          this.resultsLength = DATALAWSUIT.count;
+          this.resultsLength = LAWSUIT.length;
 
-          return DATALAWSUIT.resultus;
+          return LAWSUIT;
         }),
         catchError(() => {
           this.isLoadingResults = false;
           return observableOf([]);
         })
       )
-      .subscribe((LAWSUITSLIST) => (this.dataSource = new MatTableDataSource<ILawSuit>(LAWSUITSLIST)));
+      .subscribe(
+        (LAWSUIT) =>
+          (this.dataSource = new MatTableDataSource<LawSuit>(LAWSUIT))
+      );
+  }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }
