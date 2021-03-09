@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 import { CustomValidators } from 'src/app/common/custom-validators';
 import { ContactService } from '../../shared/contact.service';
 
@@ -16,7 +17,8 @@ export class ContactNewComponent implements OnInit {
     public dialogRef: MatDialogRef<ContactNewComponent>,
     private _formBuilder: FormBuilder,
     private customValidators: CustomValidators,
-    private contactService: ContactService
+    private contactService: ContactService,
+    private toastr: ToastrService
   ) {
     this.contactFormGroup = this._formBuilder.group({
       name: ['', [Validators.required]],
@@ -40,7 +42,9 @@ export class ContactNewComponent implements OnInit {
         .subscribe(
           (CONTACT) => {},
           (error) => {
-            console.log(error);
+            this.toastr.error(
+              'Houve algum problema inesperado, tente novamente mais tarde'
+            );
           }
         )
         .add(() => {
@@ -48,12 +52,5 @@ export class ContactNewComponent implements OnInit {
         });
       return;
     }
-    this.callValidator();
-  }
-  callValidator(): void {
-    this.contactFormGroup.controls['name'].markAsTouched();
-    this.contactFormGroup.controls['social_number'].markAsTouched();
-    this.contactFormGroup.controls['email'].markAsTouched();
-    this.contactFormGroup.controls['phone'].markAsTouched();
   }
 }

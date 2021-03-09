@@ -6,9 +6,20 @@ import { LawsuitComponent } from './lawsuit.component';
 import { LawSuitRoutingModule } from './lawsuit-routing.module';
 import { MatTableModule } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import {
+  MatPaginatorIntl,
+  MatPaginatorModule,
+} from '@angular/material/paginator';
 import { MatMenuModule } from '@angular/material/menu';
 import { AuthGuard } from 'src/app/common/services/authentication/auth-guard';
+import { MatPaginatorI18nService } from 'src/app/common/mat-paginator-i18n.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { NewLawsuitComponent } from './components/new-lawsuit/new-lawsuit.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { NgxMaskModule } from 'ngx-mask';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   imports: [
     CommonModule,
@@ -19,9 +30,19 @@ import { AuthGuard } from 'src/app/common/services/authentication/auth-guard';
     MatProgressSpinnerModule,
     MatPaginatorModule,
     MatMenuModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatDialogModule,
+    NgxMaskModule.forRoot(),
+    MatSelectModule,
   ],
-  declarations: [LawsuitComponent],
-  providers: [AuthGuard],
+  declarations: [LawsuitComponent, NewLawsuitComponent],
+  providers: [
+    AuthGuard,
+    { provide: MatPaginatorIntl, useValue: MatPaginatorI18nService() }, // Here
+  ],
   exports: [LawsuitComponent],
 })
 export class LawSuitModule {}

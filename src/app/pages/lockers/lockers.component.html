@@ -1,0 +1,34 @@
+<div class="card mat-elevation-z8">
+  <div class="header-content">
+    <h3>Gavetas</h3>
+    <button mat-mini-fab class="main-button-fab" (click)="openNew()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <mat-tab-group animationDuration="500ms">
+    <mat-tab label="Vazias"
+      ><mat-list>
+        <mat-list-item *ngFor="let locker of lockersEmpty">
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <div mat-line>{{ locker.number }}</div>
+          <div mat-line>{{ locker.updated_at | date }}</div>
+          <mat-slide-toggle [color]="color" [checked]="locker.full" (change)="onToggle(locker)">
+            Cheia
+          </mat-slide-toggle>
+        </mat-list-item></mat-list
+      ></mat-tab
+    >
+    <mat-tab label="Cheias">
+      <mat-list>
+        <mat-list-item *ngFor="let locker of lockersFull">
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <div mat-line>{{ locker.number }}</div>
+          <div mat-line>{{ locker.updated_at | date }}</div>
+          <mat-slide-toggle [color]="color" [checked]="locker.full" (change)="onToggle(locker)">
+            Cheia
+          </mat-slide-toggle>
+        </mat-list-item></mat-list
+      >
+    </mat-tab>
+  </mat-tab-group>
+</div>

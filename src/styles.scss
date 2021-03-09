@@ -60,6 +60,8 @@ body {
 }
 :root {
   --primary-color: #4a596a;
+  --primary-color-hover: #4a596ab5;
+  --primary-color-disabled: #4a596a52;
   --background-color: #f3f7fa;
   --status-indicator-size: 10px;
   --header-height: 70px;
@@ -129,13 +131,57 @@ button {
 .mat-dialog-container {
   padding: 0 !important;
 }
-button.main-button {
-  background-color: var(--primary-color) !important;
+button.main-button-fab{
+  background: var(--primary-color) !important;
   color: white;
+}
+button.main-button {
+  background: var(--primary-color) !important;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(138, 138, 138, 1);
+  -moz-box-shadow: 2px 2px 5px 0px rgba(138, 138, 138, 1);
+  box-shadow: 2px 2px 5px 0px rgba(138, 138, 138, 1);
+  &:focus {
+    outline: 0;
+  }
+  &:hover {
+    background-color: var(--primary-color-hover) !important;
+  }
+  &:active {
+    background-color: var(--primary-color-hover) !important;
+    box-shadow: 0 0 0 white;
+    transform: translateY(1px);
+  }
+  &:disabled {
+    background: var(--primary-color-disabled) !important;
+    box-shadow: none;
+  }
 }
 button.main-button-inverse {
   border: 1px solid var(--primary-color) !important;
-  color: var(--primary-color);
+  color: var(--primary-color) !important;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(138, 138, 138, 1);
+  -moz-box-shadow: 2px 2px 5px 0px rgba(138, 138, 138, 1);
+  box-shadow: 2px 2px 5px 0px rgba(138, 138, 138, 1);
+  &:focus {
+    outline: 0;
+  }
+  &:hover {
+    background-color: var(--primary-color-disabled) !important;
+  }
+  &:active {
+    background-color: var(--primary-color-hover) !important;
+    box-shadow: 0 0 0 white;
+    transform: translateY(1px);
+  }
 }
 .loading-fade {
   width: 100%;

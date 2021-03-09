@@ -1,18 +1,20 @@
-export interface ILawSuit {
+export interface LawSuit {
+  id?: number;
+  created_at?: string;
+  updated_at?: string;
   district: string;
   court: Court;
-  observation: string;
-  code_number: number;
-  client: string;
+  code_number: string;
   descriptor: string;
+  observation: string;
   identifier: string;
+  client: number;
   locker: number;
+  company: number;
 }
-export interface DataLawSuit {
-  next: string;
-  previous: string;
-  count: number;
-  resultus: ILawSuit[];
+export interface CourtView{
+  label: string;
+  value: string
 }
 export enum Court {
   IN = 'IN',

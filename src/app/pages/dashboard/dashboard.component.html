@@ -5,16 +5,10 @@
         <div class="top-side">
           <div class="widget-icon-box">
             <span class="material-icons"> supervisor_account </span>
-            <div class="badge-box">
-              <span class="badge"
-                ><span class="material-icons"> show_chart </span
-                ><strong class="accent-text">16%</strong></span
-              >
-            </div>
           </div>
           <div class="widget-info">
             <div class="widget-title">Clientes</div>
-            <h2 class="text-truncate">523</h2>
+            <h2 class="text-truncate">{{ dataTotal.count_client }}</h2>
           </div>
         </div>
       </div>
@@ -24,18 +18,10 @@
         <div class="top-side">
           <div class="widget-icon-box">
             <span class="material-icons"> list_alt </span>
-            <div class="badge-box">
-              <span class="badge"
-                ><span class="material-icons"> show_chart </span
-                ><strong data-v-69f1131d="" class="accent-text"
-                  >16%</strong
-                ></span
-              >
-            </div>
           </div>
           <div class="widget-info">
             <div class="widget-title">Processos</div>
-            <h2 class="text-truncate">4,523</h2>
+            <h2 class="text-truncate">{{ dataTotal.count_lawsuit }}</h2>
           </div>
         </div>
       </div>
@@ -45,25 +31,25 @@
         <div class="top-side">
           <div class="widget-icon-box">
             <span class="material-icons"> folder_shared </span>
-            <div class="badge-box">
-              <span class="badge"
-                ><span class="material-icons"> show_chart </span
-                ><strong class="accent-text">16%</strong></span
-              >
-            </div>
           </div>
           <div class="widget-info">
             <div class="widget-title">Gavetas</div>
-            <h2 class="text-truncate">23</h2>
+            <h2 class="text-truncate">{{ dataTotal.count_locker }}</h2>
           </div>
         </div>
       </div>
     </mat-card>
   </div>
-  <div class="components-wrapper">
-    <app-lawsuit></app-lawsuit>
+  <div class="lawsuit-wrapper">
+    <div class="left-60">
+      <app-lawsuit></app-lawsuit>
+    </div>
+    <div class="right-40">
+      <app-lockers></app-lockers>
+    </div>
+    
   </div>
-  <div class="components-wrapper">
+  <div class="contact-wrapper">
     <app-contacts></app-contacts>
   </div>
 </div>

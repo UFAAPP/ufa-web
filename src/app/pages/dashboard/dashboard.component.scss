@@ -70,7 +70,16 @@
       }
     }
   }
-  .components-wrapper{
+  .lawsuit-wrapper{
     margin: 30px 0;
+    display: flex;
+    flex: 1;
+    .left-60{
+      width: 60%;
+      margin-right: 30px;
+    }
+    .right-40{
+      width: 40%;
+    }
   }
 }

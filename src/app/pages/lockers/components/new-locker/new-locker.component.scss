@@ -1,0 +1,40 @@
+mat-dialog-content {
+  overflow: hidden;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative;
+  .close-wrapper {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .content {
+    padding: 0 20px 20px;
+    form {
+      .form-wrapper {
+        display: flex;
+        margin-top: 20px;
+        align-items: center;
+        mat-form-field {
+          &:first-child {
+            margin-right: 20px;
+          }
+        }
+        mat-slide-toggle {
+          margin-bottom: 25.5px;
+        }
+      }
+    }
+    .actions {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      button {
+        &:first-child {
+          margin-right: 20px;
+        }
+        width: 100px;
+        height: 40px;
+      }
+    }
+  }
+}

@@ -71,4 +71,10 @@ export class ContactDetailComponent implements OnInit {
       this.dialogRef.close();
     }
   }
+  openWhatsApp() {
+    const whatsapp = this.contactFormGroup.controls['whatsapp'].value;
+    if (whatsapp) {
+      window.open(`https://wa.me/55${whatsapp}`, '_blank');
+    }
+  }
 }
