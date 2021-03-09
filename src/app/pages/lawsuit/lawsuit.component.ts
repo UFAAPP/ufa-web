@@ -25,9 +25,8 @@ export class LawsuitComponent implements OnInit, AfterViewInit {
     'locker',
     'actions',
   ];
-
+  hasData= false
   dataSource: MatTableDataSource<LawSuit>;
-  resultsLength = 0;
   isLoadingResults = true;
   length = 0;
   pageSize = 5;
@@ -44,6 +43,7 @@ export class LawsuitComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {}
   ngAfterViewInit(): void {
     this.fetchTable();
+    console.log(this.length)
   }
   fetchTable() {
     merge()
@@ -56,8 +56,8 @@ export class LawsuitComponent implements OnInit, AfterViewInit {
         map((LAWSUIT) => {
           // Flip flag to show that loading has finished.
           this.isLoadingResults = false;
-          this.resultsLength = LAWSUIT.length;
-
+          this.length = LAWSUIT.length;
+          this.hasData = LAWSUIT.length ? true : false;
           return LAWSUIT;
         }),
         catchError(() => {
@@ -76,7 +76,8 @@ export class LawsuitComponent implements OnInit, AfterViewInit {
   }
   openNew() {
     const dialogRef = this.dialog.open(NewLawsuitComponent, {
-      width: 'auto',
+      width: '600px',
+      height: 'auto',
     });
     dialogRef.afterClosed().subscribe((result) => this.fetchTable());
     dialogRef.backdropClick().subscribe((_) => {

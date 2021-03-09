@@ -12,7 +12,10 @@ export interface LawSuit {
   locker: number;
   company: number;
 }
-
+export interface CourtView{
+  label: string;
+  value: string
+}
 export enum Court {
   IN = 'IN',
   FA = 'FA',

@@ -18,7 +18,7 @@
     <div class="loading-shade" *ngIf="isLoadingResults">
       <mat-spinner></mat-spinner>
     </div>
-    <div class="loading-shade" *ngIf="dataSource.data">
+    <div class="loading-shade" *ngIf="!hasData">
       Não encontramos nenhum contrato.
     </div>
 

@@ -9,21 +9,148 @@
   </div>
 
   <div class="content">
-    <form [formGroup]="lwaSuitFormGroup">
-      <mat-form-field class="material-form" appearance="outline">
-        <mat-label>Distrito</mat-label>
-        <input
-          matInput
-          formControlName="district"
-          placeholder="Distrito"
-          required
-        />
-        <mat-error>
-          <p *ngIf="lwaSuitFormGroup.controls['district'].hasError('required')">
-            Distrito é um campo obrigatório
-          </p></mat-error
-        >
-      </mat-form-field>
+    <h3>Adicionar Processo</h3>
+    <form [formGroup]="lawSuitFormGroup" (ngSubmit)="save()">
+      <div class="div-line">
+        <mat-form-field class="material-form" appearance="outline">
+          <mat-label>Distrito</mat-label>
+          <input
+            matInput
+            formControlName="district"
+            placeholder="Distrito"
+            required
+          />
+          <mat-error>
+            <p
+              *ngIf="lawSuitFormGroup.controls['district'].hasError('required')"
+            >
+              Distrito é um campo obrigatório
+            </p></mat-error
+          >
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Vara</mat-label>
+          <mat-select required formControlName="court">
+            <mat-option *ngFor="let court of courts" [value]="court.value">
+              {{ court.label }}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="lawSuitFormGroup.controls['court'].hasError('required')"
+          >
+            Vara é um campo obrigatório
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="div-line">
+        <mat-form-field class="material-form" appearance="outline">
+          <mat-label>Número do Processo</mat-label>
+          <input
+            matInput
+            formControlName="code_number"
+            placeholder="Número do Processo"
+            required
+          />
+          <mat-error>
+            <p
+              *ngIf="
+                lawSuitFormGroup.controls['code_number'].hasError('required')
+              "
+            >
+              Nº do Processo é um campo obrigatório
+            </p></mat-error
+          >
+        </mat-form-field>
+        <mat-form-field class="material-form" appearance="outline">
+          <mat-label>Identificador</mat-label>
+          <input
+            matInput
+            formControlName="identifier"
+            placeholder="Identificador"
+            required
+          />
+          <mat-error>
+            <p
+              *ngIf="
+                lawSuitFormGroup.controls['identifier'].hasError('required')
+              "
+            >
+              Identificador é um campo obrigatório
+            </p></mat-error
+          >
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="material-form" appearance="outline">
+          <mat-label>Descriptor</mat-label>
+          <input
+            matInput
+            formControlName="descriptor"
+            placeholder="Descriptor"
+            required
+          />
+          <mat-error>
+            <p
+              *ngIf="
+                lawSuitFormGroup.controls['descriptor'].hasError('required')
+              "
+            >
+              Descriptor é um campo obrigatório
+            </p></mat-error
+          >
+        </mat-form-field>
+      </div>
+      <div class="div-line">
+        <mat-form-field appearance="outline">
+          <mat-label>Cliente</mat-label>
+          <mat-select required formControlName="client">
+            <mat-option *ngFor="let contact of contacts" [value]="contact.id">
+              {{ contact.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="lawSuitFormGroup.controls['client'].hasError('required')"
+          >
+            Cliente é um campo obrigatório
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Gaveta</mat-label>
+          <mat-select required formControlName="locker">
+            <mat-option *ngFor="let locker of lockers" [value]="locker.id">
+              {{ locker.number }}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="lawSuitFormGroup.controls['locker'].hasError('required')"
+          >
+            Gaveta é um campo obrigatório
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Observação</mat-label>
+          <textarea
+            matInput
+            placeholder="Ex. Aguardando resposta..."
+            required
+            formControlName="observation"
+          ></textarea>
+          <mat-error
+            *ngIf="
+              lawSuitFormGroup.controls['observation'].hasError('required')
+            "
+          >
+            Observação é um campo obrigatório
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="actions">
+        <button class="main-button-inverse" mat-dialog-close>Cancelar</button>
+        <button class="main-button" type="submit">Salvar</button>
+      </div>
     </form>
+   
   </div></mat-dialog-content
 >
