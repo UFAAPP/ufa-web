@@ -17,10 +17,9 @@ import { StorageService } from 'src/app/common/services/storage/storage.service'
 export class LoginComponent implements OnInit {
   loginFormGroup: FormGroup;
   loading = false;
-  color: ThemePalette = 'primary';
-  mode: ProgressSpinnerMode = 'indeterminate';
-  value = 50;
   cpfEmailMask = '';
+  salution = '';
+  today = new Date();
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -42,7 +41,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.setSalution();
+  }
 
   login(): void {
     if (this.loginFormGroup.invalid) {
@@ -84,6 +85,18 @@ export class LoginComponent implements OnInit {
       this.cpfEmailMask = '000.000.000-00';
     } else {
       this.cpfEmailMask = '';
+    }
+  }
+  setSalution(): void {
+    var today = new Date();
+    var curHr = today.getHours();
+
+    if (curHr < 12) {
+      this.salution = 'Bom dia';
+    } else if (curHr < 18) {
+      this.salution = 'Boa tarde';
+    } else {
+      this.salution = 'Boa noite';
     }
   }
 }
