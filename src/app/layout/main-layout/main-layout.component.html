@@ -3,7 +3,7 @@
     <nav>
       <mat-card>
         <div class="logo-wrapper">
-          <h1>UFA!</h1>
+          <img src="assets/images/logo.png" alt="ufa logo" />
         </div>
         <mat-list class="nav-menu">
           <mat-list-item
@@ -16,7 +16,7 @@
           </mat-list-item>
         </mat-list>
         <button mat-icon-button [matMenuTriggerFor]="menu">
-          <ngx-avatar name="{{companyName}}" [initialsSize]="2"></ngx-avatar>
+          <ngx-avatar name="{{ companyName }}" [initialsSize]="2"></ngx-avatar>
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item (click)="navigateTo('/perfil')">

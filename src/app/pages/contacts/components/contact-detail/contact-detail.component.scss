@@ -4,7 +4,7 @@ mat-dialog-content {
   height: 100%;
   position: relative;
   max-height: none !important;
-  button {
+  button.close-button {
     border: none;
     background: none;
     cursor: pointer;
@@ -19,7 +19,7 @@ mat-dialog-content {
   }
 
   .top {
-    background: #5f8fdf;
+    background: var(--text-color);
     margin-bottom: 50px;
     position: relative;
     height: 70px;
@@ -58,10 +58,15 @@ mat-dialog-content {
       margin-right: 20px;
     }
   }
-  button{
+  button.whatsapp-btn {
+    border: none;
+    background: none !important;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
     box-shadow: none;
-    svg{
-        fill: green;
+    svg {
+      fill: green;
     }
   }
 }

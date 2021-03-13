@@ -174,7 +174,6 @@ button.main-button-fab {
 button.main-button {
   background: var(--primary-color);
   color: white;
-  font-size: 18px;
   border-radius: 5px;
   padding: 10px;
   cursor: pointer;
@@ -216,7 +215,6 @@ button.main-button-inverse {
     background-color: var(--primary-color-disabled);
   }
   &:active {
-    background-color: var(--primary-color-hover);
     box-shadow: 0 0 0 white;
     transform: translateY(1px);
   }
@@ -289,11 +287,35 @@ button.main-button-inverse {
   .mat-form-field-label {
     color: var(--text-color) !important;
   }
-}
-.mat-form-field.mat-focused.mat-primary .mat-select-arrow {
-  color: var(--text-color) !important;
+  .mat-select-arrow {
+    color: var(--text-color) !important;
+  }
+  .mat-form-field-ripple {
+    background-color: var(--text-color) !important;
+  }
 }
 .mat-progress-spinner circle,
 .mat-spinner circle {
   stroke: var(--primary-color) !important;
+}
+.mat-flat-button.mat-accent,
+.mat-raised-button.mat-accent,
+.mat-fab.mat-accent,
+.mat-mini-fab.mat-accent {
+  background-color: var(--primary-color) !important;
+}
+.mat-datepicker-toggle-active {
+  color: var(--primary-color) !important;
+}
+.mat-slide-toggle.mat-primary.mat-checked:not(.mat-disabled)
+  .mat-slide-toggle-thumb {
+  background-color: var(--primary-color) !important;
+}
+
+.mat-slide-toggle.mat-primary.mat-checked:not(.mat-disabled)
+  .mat-slide-toggle-bar {
+  background-color: var(--primary-color-hover) !important;
+}
+mat-dialog-container{
+  padding: 0 !important;
 }

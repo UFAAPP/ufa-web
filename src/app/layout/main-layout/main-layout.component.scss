@@ -19,6 +19,11 @@
         border: none;
         box-shadow: none;
         background: var(--background-color);
+        .logo-wrapper {
+          img {
+            width: 140px;
+          }
+        }
         button {
           cursor: pointer;
         }
@@ -29,10 +34,10 @@
             margin-left: -16px;
             cursor: pointer;
             &.active {
-              color: var(--status-indicator-color-active);
+              color: var(--primary-color);
               p {
                 &:after {
-                  background: var(--status-indicator-color-active);
+                  background: var(--primary-color);
                 }
               }
             }
