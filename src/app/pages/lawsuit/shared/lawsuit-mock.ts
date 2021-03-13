@@ -1,13 +1,13 @@
 import { CourtView } from './lawsuit-model';
 
 export const COURTLIST: CourtView[] = [
-  { label: 'IN', value: 'IN' },
-  { label: 'FA', value: 'FA' },
-  { label: 'CI', value: 'CI' },
-  { label: 'FM', value: 'FM' },
-  { label: 'CR', value: 'CR' },
-  { label: 'ER', value: 'ER' },
-  { label: 'AU', value: 'AU' },
-  { label: 'EC', value: 'EC' },
-  { label: 'UN', value: 'UN' },
+  { label: 'Infância', value: 'IN' },
+  { label: 'Fazenda', value: 'FA' },
+  { label: 'Civel', value: 'CI' },
+  { label: 'Familia', value: 'FM' },
+  { label: 'Criminal', value: 'CR' },
+  { label: 'Especial Criminal', value: 'ER' },
+  { label: 'Direito auxiliares', value: 'AU' },
+  { label: 'Especial Cível', value: 'EC' },
+  { label: 'Única', value: 'UN' },
 ];
