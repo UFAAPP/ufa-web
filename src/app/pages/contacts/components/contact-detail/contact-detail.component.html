@@ -4,7 +4,7 @@
   </div>
   <div class="top">
     <div class="close-wrapper">
-      <button mat-button mat-dialog-close>
+      <button mat-button mat-dialog-close class="close-button">
         <span class="material-icons"> close </span>
       </button>
     </div>
@@ -95,7 +95,7 @@
             mask="(00)00000-0000"
           />
         </mat-form-field>
-        <button mat-fab color="primary" aria-label="whatsapp icon" (click)="openWhatsApp()" *ngIf="contactFormGroup.controls['whatsapp'].value">
+        <button mat-fab class="whatsapp-btn" aria-label="whatsapp icon" (click)="openWhatsApp()" *ngIf="contactFormGroup.controls['whatsapp'].value">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"

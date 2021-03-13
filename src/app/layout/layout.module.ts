@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AvatarModule } from 'ngx-avatar';
 
+const avatarColors = ['#ff0000'];
 @NgModule({
   imports: [
     CommonModule,
@@ -24,7 +25,9 @@ import { AvatarModule } from 'ngx-avatar';
     MatMenuModule,
     MatIconModule,
     MatDialogModule,
-    AvatarModule
+    AvatarModule.forRoot({
+      colors: avatarColors,
+    }),
   ],
   exports: [MainLayoutComponent, FullPageComponent],
   declarations: [MainLayoutComponent, FullPageComponent],

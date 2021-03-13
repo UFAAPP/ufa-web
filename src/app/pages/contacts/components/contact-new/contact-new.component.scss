@@ -4,7 +4,7 @@ mat-dialog-content {
   height: 100%;
   position: relative;
   max-height: none !important;
-  button {
+  button.close-button {
     border: none;
     background: none;
     cursor: pointer;
@@ -19,7 +19,7 @@ mat-dialog-content {
   }
 
   .top {
-    background: #5f8fdf;
+    background: var(--text-color);
     margin-bottom: 50px;
     position: relative;
     height: 70px;
@@ -51,3 +51,4 @@ mat-dialog-content {
     }
   }
 }
+

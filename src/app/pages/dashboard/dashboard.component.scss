@@ -7,7 +7,7 @@
       width: calc((100vw -200px) / 3);
       margin-left: 5px;
       margin-right: 5px;
-      color: var(--primary-color);
+      color: var(--text-color);
       &:first-child {
         margin-left: 0px;
       }
@@ -32,7 +32,7 @@
             flex: 1;
             align-items: center;
             justify-content: space-evenly;
-            color: #5f8fdf;
+            color: var(--text-color);
             .badge-box {
               display: flex;
               .badge {
