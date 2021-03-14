@@ -20,6 +20,8 @@ import { NewLawsuitComponent } from './components/new-lawsuit/new-lawsuit.compon
 import { MatDialogModule } from '@angular/material/dialog';
 import { NgxMaskModule } from 'ngx-mask';
 import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { Utils } from 'src/app/common/utils';
 @NgModule({
   imports: [
     CommonModule,
@@ -37,11 +39,13 @@ import { MatSelectModule } from '@angular/material/select';
     MatDialogModule,
     NgxMaskModule.forRoot(),
     MatSelectModule,
+    MatAutocompleteModule,
   ],
   declarations: [LawsuitComponent, NewLawsuitComponent],
   providers: [
     AuthGuard,
-    { provide: MatPaginatorIntl, useValue: MatPaginatorI18nService() }, // Here
+    { provide: MatPaginatorIntl, useValue: MatPaginatorI18nService() },
+    Utils,
   ],
   exports: [LawsuitComponent],
 })

@@ -3,24 +3,24 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { CustomValidators } from 'src/app/common/custom-validators';
-import { ContactService } from '../../shared/contact.service';
+import { ClientService } from '../../shared/clients.service';
 
 @Component({
-  selector: 'app-contact-new',
-  templateUrl: './contact-new.component.html',
-  styleUrls: ['./contact-new.component.scss'],
+  selector: 'app-client-new',
+  templateUrl: './client-new.component.html',
+  styleUrls: ['./client-new.component.scss'],
 })
-export class ContactNewComponent implements OnInit {
-  contactFormGroup: FormGroup;
+export class ClientNewComponent implements OnInit {
+  clientFormGroup: FormGroup;
   loading = true;
   constructor(
-    public dialogRef: MatDialogRef<ContactNewComponent>,
+    public dialogRef: MatDialogRef<ClientNewComponent>,
     private _formBuilder: FormBuilder,
     private customValidators: CustomValidators,
-    private contactService: ContactService,
+    private clientService: ClientService,
     private toastr: ToastrService
   ) {
-    this.contactFormGroup = this._formBuilder.group({
+    this.clientFormGroup = this._formBuilder.group({
       name: ['', [Validators.required]],
       social_number: [
         '',
@@ -35,10 +35,10 @@ export class ContactNewComponent implements OnInit {
 
   ngOnInit(): void {}
   save(): void {
-    if (this.contactFormGroup.valid) {
+    if (this.clientFormGroup.valid) {
       this.loading = true;
-      this.contactService
-        .postContacts(this.contactFormGroup.value)
+      this.clientService
+        .postClients(this.clientFormGroup.value)
         .subscribe(
           (CONTACT) => {},
           (error) => {

@@ -1,3 +1,4 @@
+
 export interface LawSuit {
   id?: number;
   created_at?: string;
@@ -12,9 +13,9 @@ export interface LawSuit {
   locker: number;
   company: number;
 }
-export interface CourtView{
+export interface CourtView {
   label: string;
-  value: string
+  value: string;
 }
 export enum Court {
   IN = 'IN',
@@ -27,3 +28,8 @@ export enum Court {
   EC = 'EC',
   UN = 'UN',
 }
+export interface DistrictGroup {
+  state: string;
+  districts: string[];
+}
+export const LAWSUITMASK = "0000000-00.0000.0.00.0000"

@@ -9,13 +9,13 @@
       </button>
     </div>
     <ngx-avatar
-      [name]="contact.name"
+      [name]="client.name"
       [size]="80"
       [initialsSize]="2"
     ></ngx-avatar>
   </div>
   <div class="bottom">
-    <form [formGroup]="contactFormGroup" id="form" (ngSubmit)="save()">
+    <form [formGroup]="clientFormGroup" id="form" (ngSubmit)="save()">
       <mat-form-field class="material-form" appearance="outline">
         <mat-label>Nome</mat-label>
         <input
@@ -25,7 +25,7 @@
           required
         />
         <mat-error>
-          <p *ngIf="contactFormGroup.controls['name'].hasError('required')">
+          <p *ngIf="clientFormGroup.controls['name'].hasError('required')">
             Nome é um campo obrigatório
           </p></mat-error
         >
@@ -42,14 +42,14 @@
         <mat-error>
           <p
             *ngIf="
-              contactFormGroup.controls['social_number'].hasError('required')
+              clientFormGroup.controls['social_number'].hasError('required')
             "
           >
             CPF é um campo obrigatório
           </p>
           <p
             *ngIf="
-              contactFormGroup.controls['social_number'].hasError('invalidCpf')
+              clientFormGroup.controls['social_number'].hasError('invalidCpf')
             "
           >
             CPF inválido.
@@ -60,11 +60,11 @@
         <mat-label>Email</mat-label>
         <input matInput formControlName="email" placeholder="Email" required />
         <mat-error>
-          <p *ngIf="contactFormGroup.controls['email'].hasError('required')">
+          <p *ngIf="clientFormGroup.controls['email'].hasError('required')">
             Email é um campo obrigatório
           </p>
           <p
-            *ngIf="contactFormGroup.controls['email'].hasError('invalidEmail')"
+            *ngIf="clientFormGroup.controls['email'].hasError('invalidEmail')"
           >
             Email inválido inválido.
           </p>
@@ -80,7 +80,7 @@
           mask="(00)00000-0000 || (00) 0000-0000"
         />
         <mat-error>
-          <p *ngIf="contactFormGroup.controls['phone'].hasError('required')">
+          <p *ngIf="clientFormGroup.controls['phone'].hasError('required')">
             Telefone é um campo obrigatório
           </p></mat-error
         >
@@ -95,7 +95,7 @@
             mask="(00)00000-0000"
           />
         </mat-form-field>
-        <button mat-fab class="whatsapp-btn" aria-label="whatsapp icon" (click)="openWhatsApp()" *ngIf="contactFormGroup.controls['whatsapp'].value">
+        <button mat-fab class="whatsapp-btn" aria-label="whatsapp icon" (click)="openWhatsApp()" *ngIf="clientFormGroup.controls['whatsapp'].value">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"

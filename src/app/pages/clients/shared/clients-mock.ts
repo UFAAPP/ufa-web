@@ -1,6 +1,6 @@
-import { Contact } from './contacts-model';
+import { Client } from './clients-model';
 
-export const CONTACTLIST: Contact[] = [
+export const CLIENTLIST: Client[] = [
   {
     name: 'Donaugh Barkley',
     email: 'dbarkley0@csmonitor.com',

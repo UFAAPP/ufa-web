@@ -7,7 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { merge, Observable, of as observableOf } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { NewLawsuitComponent } from './components/new-lawsuit/new-lawsuit.component';
-import { LawSuit } from './shared/lawsuit-model';
+import { LawSuit, LAWSUITMASK } from './shared/lawsuit-model';
 import { LawsuitService } from './shared/lawsuit.service';
 
 @Component({
@@ -17,20 +17,19 @@ import { LawsuitService } from './shared/lawsuit.service';
 })
 export class LawsuitComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = [
-    'district',
-    'court',
     'code_number',
-    'client',
     'descriptor',
+    'client',
     'locker',
     'actions',
   ];
-  hasData= false
+  hasData = false;
   dataSource: MatTableDataSource<LawSuit>;
   isLoadingResults = true;
   length = 0;
   pageSize = 5;
   pageSizeOptions: number[] = [5, 10, 25, 100];
+  lawsuitMask = LAWSUITMASK;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor(
@@ -43,7 +42,7 @@ export class LawsuitComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {}
   ngAfterViewInit(): void {
     this.fetchTable();
-    console.log(this.length)
+    console.log(this.length);
   }
   fetchTable() {
     merge()
