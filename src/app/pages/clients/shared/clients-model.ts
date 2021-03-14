@@ -1,4 +1,4 @@
-export interface Contact {
+export interface Client {
   id?: number;
   name: string;
   email: string;
@@ -6,5 +6,5 @@ export interface Contact {
   whatsapp?: string;
   social_number: string;
   observation?: string;
-  company: number;
+  company?: number;
 }

@@ -49,7 +49,7 @@
       </ul>
     </li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#client">Client</a></li>
     <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
@@ -106,7 +106,7 @@ See the [open issues](https://github.com/UFAAPP/ufa-web/issues) for a list of pr
 
 <!-- CONTACT -->
 
-## Contact
+## Client
 
 Bruno Vasconcelos - [@domvcelos](https://twitter.com/domvcelos) - domvcelos@gmail.com
 

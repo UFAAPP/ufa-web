@@ -6,13 +6,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthorizationInterceptor } from './common/interceptor/authorization-interceptor';
 import { LayoutModule } from './layout/layout.module';
-import { ContactsModule } from './pages/contacts/contacts.module';
+import { ClientsModule } from './pages/clients/clients.module';
 import { DashboardModule } from './pages/dashboard/dashboard.module';
 import { LawSuitModule } from './pages/lawsuit/lawsuit.module';
+import { LockersModule } from './pages/lockers/lockers.module';
 import { LoginModule } from './pages/login/login.module';
 import { ProfileModule } from './pages/profile/profile.module';
-import { LockersComponent } from './pages/lockers/lockers.component';
-import { LockersModule } from './pages/lockers/lockers.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +22,7 @@ import { LockersModule } from './pages/lockers/lockers.module';
     LayoutModule,
     LoginModule,
     DashboardModule,
-    ContactsModule,
+    ClientsModule,
     LawSuitModule,
     ProfileModule,
     LockersModule,

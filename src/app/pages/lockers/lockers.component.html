@@ -10,7 +10,7 @@
       ><mat-list>
         <mat-list-item *ngFor="let locker of lockersEmpty">
           <mat-icon mat-list-icon>folder</mat-icon>
-          <div mat-line>{{ locker.number }}</div>
+          <div mat-line>Gaveta {{ locker.number }}</div>
           <div mat-line>{{ locker.updated_at | date }}</div>
           <mat-slide-toggle [color]="color" [checked]="locker.full" (change)="onToggle(locker)">
             Cheia
@@ -22,7 +22,7 @@
       <mat-list>
         <mat-list-item *ngFor="let locker of lockersFull">
           <mat-icon mat-list-icon>folder</mat-icon>
-          <div mat-line>{{ locker.number }}</div>
+          <div mat-line>Gaveta {{ locker.number }}</div>
           <div mat-line>{{ locker.updated_at | date }}</div>
           <mat-slide-toggle [color]="color" [checked]="locker.full" (change)="onToggle(locker)">
             Cheia

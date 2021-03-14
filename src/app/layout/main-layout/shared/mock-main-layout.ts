@@ -7,5 +7,5 @@ export const MENULIST: ISideBar[] = [
     path: '/dashboard',
   },
   { icon: 'list_alt', label: 'processos', path: '/processos' },
-  { icon: 'supervisor_account', label: 'contatos', path: '/contatos' },
+  { icon: 'supervisor_account', label: 'clientes', path: '/clients' },
 ];

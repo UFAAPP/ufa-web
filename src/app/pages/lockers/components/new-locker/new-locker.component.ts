@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
-import { ContactDetailComponent } from 'src/app/pages/contacts/components/contact-detail/contact-detail.component';
+import { ClientDetailComponent } from 'src/app/pages/clients/components/client-detail/client-detail.component';
 import { LockerService } from '../../shared/locker.service';
 
 @Component({
@@ -14,10 +14,10 @@ import { LockerService } from '../../shared/locker.service';
 export class NewLockerComponent implements OnInit {
   loading = false;
   lockerFormGroup: FormGroup;
-  color: ThemePalette = 'primary';
+
   constructor(
     private formBuilder: FormBuilder,
-    public dialogRef: MatDialogRef<ContactDetailComponent>,
+    public dialogRef: MatDialogRef<ClientDetailComponent>,
     private lockerService: LockerService,
     private toastr: ToastrService
   ) {

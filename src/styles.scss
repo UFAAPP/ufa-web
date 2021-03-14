@@ -316,6 +316,12 @@ button.main-button-inverse {
   .mat-slide-toggle-bar {
   background-color: var(--primary-color-hover) !important;
 }
-mat-dialog-container{
+
+.mat-tab-group.mat-primary {
+  .mat-ink-bar {
+    background-color: var(--primary-color-hover) !important;
+  }
+}
+mat-dialog-container {
   padding: 0 !important;
 }
