@@ -1,5 +1,21 @@
 .content {
-  .header-content{
-      margin-bottom: 30px;
+ 
+  .header-content {
+    margin-bottom: 15px;
+  }
+  .search-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    mat-form-field {
+      width: 300px;
+    }
+    button{
+      height: 40px;
+      width: 200px;
+    }
+  }
+  .table-container {
+    position: relative;
   }
 }

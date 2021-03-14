@@ -1,18 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { User } from '../authentication/auth.models';
 
 export enum StorageTypes {
   CURRENT_USER = 'current_user',
   TOKEN = 'token',
   REFRESH = 'refresh',
 }
-
-interface User {
-  username: string;
-  password: string;
-  access_token: string;
-}
-
 @Injectable({
   providedIn: 'root',
 })

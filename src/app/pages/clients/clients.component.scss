@@ -1,0 +1,89 @@
+.content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  .left {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    .card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 3px 6px 0 rgb(40 40 90 / 9%), 0 1px 1px 0 rgb(0 0 0 / 7%);
+      padding: 50px;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      mat-form-field,
+      h3 {
+        margin-bottom: 30px;
+      }
+      button {
+        span {
+          margin-right: 10px;
+        }
+        &:hover {
+          color: var(--status-indicator-color-active);
+          border-color: var(--status-indicator-color-active);
+        }
+      }
+    }
+  }
+  .right {
+    width: 60%;
+    height: 100%;
+    position: relative;
+    mat-list {
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding-right: 20px;
+      mat-list-item {
+        height: auto;
+        mat-card {
+          background: none;
+          border: none;
+          box-shadow: none;
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          cursor: pointer;
+          transition: transform 0.2s background-color .6s;
+          &:hover {
+            background-color: #fff;
+            transform: scale(
+              1.05
+            ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+          }
+          .right-left {
+            align-items: end;
+            display: flex;
+            width: 80%;
+            overflow-wrap: break-word;
+          }
+          mat-card-header {
+            display: flex;
+          }
+          mat-card-content {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+          }
+        }
+      }
+    }
+  }
+}
+.client-title {
+  font-size: 16px;
+  margin-bottom: 12px;
+  margin-top: 5px;
+}
+.client-subtitle {
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}

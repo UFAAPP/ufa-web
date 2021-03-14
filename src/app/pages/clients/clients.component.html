@@ -1,0 +1,67 @@
+<div class="content">
+  <div class="left">
+    <div class="card">
+      <h3>Contatos</h3>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Procurar contato</mat-label>
+        <span matPrefix class="material-icons"> search </span>
+        <input type="text" matInput placeholder="Ex.: José"  (input)="filter()" [(ngModel)]="searchName"/>
+        <mat-hint align="end"
+          ><strong>{{ filteredClient.length }}</strong> contatos</mat-hint
+        >
+      </mat-form-field>
+
+      <button mat-stroked-button (click)="openNew()">
+        <span class="material-icons"> person_add_alt_1 </span>Adicionar contato
+      </button>
+    </div>
+  </div>
+  <div class="right">
+    <mat-list *ngIf="!searchName">
+      <mat-list-item
+        *ngFor="let client of clientList"
+        (click)="openDetails(client)"
+        ><mat-card>
+          <div class="right-left">
+            <ngx-avatar [name]="client.name" [initialsSize]="2"></ngx-avatar>
+            <mat-card-header>
+              <mat-card-title class="client-title">{{
+                client.name
+              }}</mat-card-title>
+              <mat-card-subtitle class="client-subtitle">{{
+                client.email
+              }}</mat-card-subtitle>
+            </mat-card-header>
+          </div>
+
+          <mat-card-content>
+            {{ client.phone | mask: '(00) 0000-0000 || (00) 00000-0000' }}
+          </mat-card-content>
+        </mat-card>
+      </mat-list-item>
+    </mat-list>
+    <mat-list *ngIf="searchName">
+      <mat-list-item
+        *ngFor="let client of filteredClient"
+        (click)="openDetails(client)"
+        ><mat-card>
+          <div class="right-left">
+            <ngx-avatar [name]="client.name" [initialsSize]="2"></ngx-avatar>
+            <mat-card-header>
+              <mat-card-title class="client-title">{{
+                client.name
+              }}</mat-card-title>
+              <mat-card-subtitle class="client-subtitle">{{
+                client.email
+              }}</mat-card-subtitle>
+            </mat-card-header>
+          </div>
+
+          <mat-card-content>
+            {{ client.phone | mask: '(00) 0000-0000 || (00) 00000-0000' }}
+          </mat-card-content>
+        </mat-card>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>

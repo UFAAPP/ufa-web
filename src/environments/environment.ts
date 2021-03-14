@@ -3,7 +3,7 @@
 export const environment = {
   production: false,
   APIs: {
-    URL: 'https://apigateway-tst.nexxera.com',
+    URL: 'http://api.ufa.app.br',
     BRASILAPI: 'https://brasilapi.com.br/api/cep/v1',
   },
 };

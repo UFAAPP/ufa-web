@@ -1,47 +1,60 @@
 <div class="content">
   <div class="left">
-    <div class="logo-wrapper">
-      <img src="../../../assets/images/logo-trans.png" />
+    <div class="loading-fade" *ngIf="loading">
+      <mat-spinner> </mat-spinner>
     </div>
-    <h1>Law and Order</h1>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-      ullamcorper nisl erat, vel convallis elit fermentum pellentesque. Sed
-      mollis velit facilisis facilisis viverra.
-    </p>
-  </div>
-  <div class="right">
-    <form [formGroup]="loginFormGroup" (ngSubmit)="login()">
-      <h2>Faça login na sua conta</h2>
-      <p>Acesse seu dashboard</p>
-      <mat-form-field class="full-width">
-        <mat-label>Email ou CPF</mat-label>
-        <input type="text" matInput formControlName="username" required />
-        <mat-error
-          *ngIf="loginFormGroup.controls['username'].hasError('required')"
-        >
-          Email ou Cpf é um campo obrigatório
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <mat-label>Senha</mat-label>
-        <input type="password" matInput formControlName="password" required />
-        <mat-error
-          *ngIf="loginFormGroup.controls['password'].hasError('required')"
-        >
-          Senha é um campo obrigatório
-        </mat-error>
-      </mat-form-field>
-      <div class="actions">
-        <button
-          mat-button
-          class="login-button"
-          color="primary"
-          type="submit"
-        >
-          Entrar
-        </button>
+    <div class="left-top">
+      <div class="logo-wrapper">
+        <img src="./assets/images/logo.png" alt="ufa-icon" />
       </div>
-    </form>
+    </div>
+    <div class="left-middle">
+      <form [formGroup]="loginFormGroup" (ngSubmit)="login()">
+        <h2 style="font-weight: normal">
+          <strong>{{ salution }},</strong> seja bem vindo!
+        </h2>
+        <p>Acesse seu painel</p>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Email ou CPF</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="username"
+            required
+            (input)="setMask()"
+            [mask]="cpfEmailMask"
+          />
+          <mat-error>
+            <p *ngIf="loginFormGroup.controls['username'].hasError('required')">
+              Email ou Cpf é um campo obrigatório
+            </p>
+            <p *ngIf="loginFormGroup.controls['username'].errors?.invalidCpf">
+              CPF inválido.
+            </p>
+            <p *ngIf="loginFormGroup.controls['username'].errors?.invalidEmail">
+              Email inválido.
+            </p>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Senha</mat-label>
+          <input type="password" matInput formControlName="password" required />
+          <mat-error
+            *ngIf="loginFormGroup.controls['password'].hasError('required')"
+          >
+            Senha é um campo obrigatório
+          </mat-error>
+        </mat-form-field>
+        <div class="actions">
+          <button mat-button class="main-button" type="submit">Entrar</button>
+        </div>
+      </form>
+    </div>
+    <div class="left-bottom">
+      <small
+        >&copy; Copyright {{ today.getFullYear() }}, UFA!</small
+      >
+    </div>
   </div>
+  <div class="right"></div>
 </div>

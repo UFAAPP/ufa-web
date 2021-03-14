@@ -1,4 +1,6 @@
 .layout {
+  width: 100%;
+  height: 100%;
   header {
     position: sticky;
     top: 0;
@@ -17,12 +19,13 @@
         border: none;
         box-shadow: none;
         background: var(--background-color);
-        mat-card-header {
-          display: block;
-          .avatar {
-            background-size: cover;
-            cursor: pointer;
+        .logo-wrapper {
+          img {
+            width: 140px;
           }
+        }
+        button {
+          cursor: pointer;
         }
         mat-list.nav-menu {
           display: flex;
@@ -31,10 +34,10 @@
             margin-left: -16px;
             cursor: pointer;
             &.active {
-              color: var(--status-indicator-color-active);
+              color: var(--primary-color);
               p {
                 &:after {
-                  background: var(--status-indicator-color-active);
+                  background: var(--primary-color);
                 }
               }
             }
@@ -68,8 +71,8 @@
             }
           }
         }
-        button{
-          &:focus{
+        button {
+          &:focus {
             outline: 0;
           }
         }

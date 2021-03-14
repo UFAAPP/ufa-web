@@ -1,27 +1,130 @@
-# LawAndOrder
+<!--
+*** Thanks for checking out the Best-README-Template. If you have a suggestion
+*** that would make this better, please fork the repo and create a pull request
+*** or simply open an issue with the tag "enhancement".
+*** Thanks again! Now go create something AMAZING! :D
+-->
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.1.
+<!-- PROJECT SHIELDS -->
+<!--
+*** I'm using markdown "reference style" links for readability.
+*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
+*** See the bottom of this document for the declaration of the reference variables
+*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
+*** https://www.markdownguide.org/basic-syntax/#reference-style-links
+-->
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://github.com/othneildrew/Best-README-Template">
+    <img src="src/assets/images/logo.png" alt="Logo" width="150" height="auto">
+  </a>
 
-## Code scaffolding
+  <p align="center">
+   Descomplique seu escritorio de advocacia.
+    <br />
+    <br />
+    <a href="http://www.ufa.app.br/">View Live</a>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+  </p>
+</p>
 
-## Build
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#sobre-o-projeto">Sobre o projeto</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#client">Client</a></li>
+    <li><a href="#acknowledgements">Acknowledgements</a></li>
+  </ol>
+</details>
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+<!-- ABOUT THE PROJECT -->
 
-## Running unit tests
+## Sobre o projeto
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-## Running end-to-end tests
+Existem muitos sistemas de gestão voltados para o nicho de advocacia disponíveis no mercado, no entanto, não encontramos um que realmente atendesse às necessidades de pequenos escritórios, então criamos o UFA!
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+### Built With
 
-## Further help
+- [Angular 11 ](https://angular.io/)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+<!-- GETTING STARTED -->
+
+## Getting Started
+
+### Prerequisites
+
+- npm
+
+  ```sh
+  npm install npm@latest -g
+  ```
+
+- angular
+  ```sh
+  npm install -g @angular/cli
+  ```
+
+### Installation
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/UFAAPP/ufa-web.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Run
+   ```sh
+   ng serve --hmr
+   ```
+
+<!-- ROADMAP -->
+
+## Roadmap
+
+See the [open issues](https://github.com/UFAAPP/ufa-web/issues) for a list of proposed features (and known issues).
+
+<!-- CONTACT -->
+
+## Client
+
+Bruno Vasconcelos - [@domvcelos](https://twitter.com/domvcelos) - domvcelos@gmail.com
+
+Andre Marques - andreluis00@gmail.com
+
+<!-- ACKNOWLEDGEMENTS -->
+
+## Acknowledgements
+
+- [Angular Material](https://material.angular.io/)
+- [Ngx Avatar](https://www.npmjs.com/package/ngx-avatar)
+- [Ngx Mask](https://www.npmjs.com/package/ngx-mask)
+- [Ngx Toastr](https://www.npmjs.com/package/ngx-toastr)
+- [Moment](https://momentjs.com/)
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
+[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
+[issues-url]: https://github.com/UFAAPP/ufa-web/issues
+[product-screenshot]: src/assets/images/screenshot.png

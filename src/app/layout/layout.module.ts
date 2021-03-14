@@ -11,7 +11,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import { AvatarModule } from 'ngx-avatar';
 
+const avatarColors = ['#ff0000'];
 @NgModule({
   imports: [
     CommonModule,
@@ -22,7 +24,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatCardModule,
     MatMenuModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    AvatarModule.forRoot({
+      colors: avatarColors,
+    }),
   ],
   exports: [MainLayoutComponent, FullPageComponent],
   declarations: [MainLayoutComponent, FullPageComponent],

@@ -1,0 +1,17 @@
+.card{
+    background-color: #fff;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+   
+    overflow-y: auto;
+    .header-content{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    mat-list{
+        height: 290px;
+    }
+}

@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "law-and-order": {
+    "UFA": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/law-and-order",
+            "outputPath": "dist/UFA",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -54,13 +54,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 }
               ]
             }
@@ -69,18 +69,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "law-and-order:build"
+            "browserTarget": "UFA:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "law-and-order:build:production"
+              "browserTarget": "UFA:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "law-and-order:build"
+            "browserTarget": "UFA:build"
           }
         },
         "test": {
@@ -113,16 +113,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "law-and-order:serve"
+            "devServerTarget": "UFA:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "law-and-order:serve:production"
+              "devServerTarget": "UFA:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "law-and-order"
+  "defaultProject": "UFA"
 }
