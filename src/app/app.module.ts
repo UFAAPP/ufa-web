@@ -12,7 +12,7 @@ import { LawSuitModule } from './pages/lawsuit/lawsuit.module';
 import { LockersModule } from './pages/lockers/lockers.module';
 import { LoginModule } from './pages/login/login.module';
 import { ProfileModule } from './pages/profile/profile.module';
-import { PipesModule } from './pipes/court/pipesModule.module';
+import { PipesModule } from './pipes/pipesModule.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,7 +27,7 @@ import { PipesModule } from './pipes/court/pipesModule.module';
     LawSuitModule,
     ProfileModule,
     LockersModule,
-    PipesModule
+    PipesModule,
   ],
   providers: [
     {

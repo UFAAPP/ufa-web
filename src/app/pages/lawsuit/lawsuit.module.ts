@@ -22,10 +22,10 @@ import { NgxMaskModule } from 'ngx-mask';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { Utils } from 'src/app/common/utils';
-import { PipesModule } from 'src/app/pipes/court/pipesModule.module';
 import { MatTabsModule } from '@angular/material/tabs';
 import { TableProgressComponent } from './components/table-progress/table-progress.component';
 import { TableArchivedComponent } from './components/table-archived/table-archived.component';
+import { PipesModule } from 'src/app/pipes/pipesModule.module';
 @NgModule({
   imports: [
     CommonModule,

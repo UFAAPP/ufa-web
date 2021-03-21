@@ -46,8 +46,8 @@ export class ClientsComponent implements OnInit {
       data: {
         ...client,
       },
-      width: '400px',
-      height: '750px',
+      width: '60vw',
+      height: '85vh',
     });
     dialogRef.afterClosed().subscribe((result) => this.getontacts());
     dialogRef.backdropClick().subscribe((_) => {

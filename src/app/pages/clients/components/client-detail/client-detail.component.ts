@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
+import { LAWSUITMASK } from 'src/app/pages/lawsuit/shared/lawsuit-model';
 import { Client } from '../../shared/clients-model';
 import { ClientService } from '../../shared/clients.service';
 
@@ -14,6 +15,8 @@ export class ClientDetailComponent implements OnInit {
   clientFormGroup: FormGroup;
   isDisabled = true;
   loading = false;
+  panelOpenState = false;
+  lawsuitMask = LAWSUITMASK;
   constructor(
     @Inject(MAT_DIALOG_DATA) public client: Client,
     private _formBuilder: FormBuilder,

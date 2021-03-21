@@ -18,7 +18,9 @@ import { AuthGuard } from 'src/app/common/services/authentication/auth-guard';
 import { ClientNewComponent } from './components/client-new/client-new.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { PipesModule } from 'src/app/pipes/pipesModule.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -37,12 +39,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatIconModule,
     MatProgressSpinnerModule,
     NgxMaskModule.forRoot(),
+    MatTabsModule,
+    MatExpansionModule,
+    PipesModule
   ],
-  declarations: [
-    ClientsComponent,
-    ClientDetailComponent,
-    ClientNewComponent,
-  ],
+  declarations: [ClientsComponent, ClientDetailComponent, ClientNewComponent],
   providers: [AuthGuard],
   exports: [ClientsComponent],
 })
