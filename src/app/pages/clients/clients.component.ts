@@ -7,6 +7,7 @@ import { ClientDetailComponent } from './components/client-detail/client-detail.
 import { ClientNewComponent } from './components/client-new/client-new.component';
 import { ClientService } from './shared/clients.service';
 import { Client } from './shared/clients-model';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'app-clients',
@@ -17,10 +18,8 @@ export class ClientsComponent implements OnInit {
   clientList: Client[] = [];
   filteredClient: Client[] = [];
   searchName = '';
-  constructor(
-    private clientService: ClientService,
-    public dialog: MatDialog
-  ) {}
+  color: ThemePalette = 'primary';
+  constructor(public clientService: ClientService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.getontacts();
@@ -46,8 +45,8 @@ export class ClientsComponent implements OnInit {
       data: {
         ...client,
       },
-      width: '400px',
-      height: '750px',
+      width: '60vw',
+      height: '75vh',
     });
     dialogRef.afterClosed().subscribe((result) => this.getontacts());
     dialogRef.backdropClick().subscribe((_) => {
@@ -55,8 +54,18 @@ export class ClientsComponent implements OnInit {
     });
   }
   getontacts(): void {
-    this.clientService
-      .getClients()
-      .subscribe((CONTACTLIST) => (this.clientList = CONTACTLIST));
+    this.clientService.getClients().subscribe((CONTACTLIST) => {
+      this.clientList = CONTACTLIST;
+      this.filteredClient = CONTACTLIST;
+    });
+  }
+  onToggle(): void {
+    if (this.clientService.isChecked) {
+       this.filteredClient = this.clientList;
+    } else {
+       this.filteredClient = this.clientList.filter(
+        (client) => client.active
+      );
+    }
   }
 }

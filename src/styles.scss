@@ -60,11 +60,13 @@ input {
   --tertiary-color: #403f3f;
   --text-color: var(--tertiary-color);
   --background-color: #f5f5f5;
-  --scrollbar-thumb-color: #403f3f;
+  --scrollbar-thumb-color: var(--tertiary-color);
   --scrollbar-track-color: #f5f5f5;
   --status-indicator-size: 10px;
   --header-height: 70px;
   --status-indicator-animation-duration: 2s;
+  --data-label: #403f3fa6;
+
 }
 h1 {
   font-size: 54px;
@@ -163,6 +165,13 @@ button {
 .close-wrapper {
   display: flex;
   justify-content: flex-end;
+
+  button{
+    &:focus{
+      outline: none;
+    }
+    cursor: pointer;
+  }
 }
 .mat-dialog-container {
   padding: 0;

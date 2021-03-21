@@ -1,12 +1,11 @@
-import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { merge, Observable, of as observableOf } from 'rxjs';
-import { catchError, map, startWith, switchMap } from 'rxjs/operators';
-import { NewLawsuitComponent } from './components/new-lawsuit/new-lawsuit.component';
+import { ToastrService } from 'ngx-toastr';
+import { LockerService } from '../lockers/shared/locker.service';
+import { LawsuitNewModalComponent } from './components/lawsuit-new-modal/lawsuit-new-modal.component';
 import { LawSuit, LAWSUITMASK } from './shared/lawsuit-model';
 import { LawsuitService } from './shared/lawsuit.service';
 
@@ -15,7 +14,7 @@ import { LawsuitService } from './shared/lawsuit.service';
   templateUrl: './lawsuit.component.html',
   styleUrls: ['./lawsuit.component.scss'],
 })
-export class LawsuitComponent implements OnInit, AfterViewInit {
+export class LawsuitComponent implements OnInit {
   displayedColumns: string[] = [
     'code_number',
     'descriptor',
@@ -24,7 +23,8 @@ export class LawsuitComponent implements OnInit, AfterViewInit {
     'actions',
   ];
   hasData = false;
-  dataSource: MatTableDataSource<LawSuit>;
+  dataSourceProgress: MatTableDataSource<LawSuit>;
+  dataSourceArchived: MatTableDataSource<LawSuit>;
   isLoadingResults = true;
   length = 0;
   pageSize = 5;
@@ -34,53 +34,36 @@ export class LawsuitComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
   constructor(
     private lawsuitService: LawsuitService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private lockerService: LockerService,
+    private toastr: ToastrService
   ) {
-    this.dataSource = new MatTableDataSource<LawSuit>();
+    this.dataSourceProgress = new MatTableDataSource<LawSuit>();
+    this.dataSourceArchived = new MatTableDataSource<LawSuit>();
   }
 
   ngOnInit(): void {}
-  ngAfterViewInit(): void {
-    this.fetchTable();
-    console.log(this.length);
-  }
-  fetchTable() {
-    merge()
-      .pipe(
-        startWith({}),
-        switchMap(() => {
-          this.isLoadingResults = true;
-          return this.lawsuitService.getLawSuits();
-        }),
-        map((LAWSUIT) => {
-          // Flip flag to show that loading has finished.
-          this.isLoadingResults = false;
-          this.length = LAWSUIT.length;
-          this.hasData = LAWSUIT.length ? true : false;
-          return LAWSUIT;
-        }),
-        catchError(() => {
-          this.isLoadingResults = false;
-          return observableOf([]);
-        })
-      )
-      .subscribe(
-        (LAWSUIT) =>
-          (this.dataSource = new MatTableDataSource<LawSuit>(LAWSUIT))
-      );
-  }
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
   openNew() {
-    const dialogRef = this.dialog.open(NewLawsuitComponent, {
-      width: '600px',
-      height: 'auto',
-    });
-    dialogRef.afterClosed().subscribe((result) => this.fetchTable());
-    dialogRef.backdropClick().subscribe((_) => {
-      this.fetchTable();
+    this.lockerService.getLockers().subscribe((LOCKERS) => {
+      const lockers = LOCKERS.filter((locker) => !locker.full);
+      if (lockers.length === 0) {
+        this.toastr.warning(
+          'É necessário criar uma gaveta ou mudar seu status para vazia',
+          'Não existem gavetas vazias'
+        );
+      } else {
+        const dialogRef = this.dialog.open(LawsuitNewModalComponent, {
+          width: '600px',
+          height: 'auto',
+          data: lockers,
+        });
+        dialogRef
+          .afterClosed()
+          .subscribe((result) => this.lawsuitService.sendFetchEvent());
+        dialogRef.backdropClick().subscribe((_) => {
+          this.lawsuitService.sendFetchEvent();
+        });
+      }
     });
   }
 }

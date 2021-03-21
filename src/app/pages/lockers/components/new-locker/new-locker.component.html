@@ -10,7 +10,7 @@
 
   <div class="content">
     <h3>Adicionar Gaveta</h3>
-    <form [formGroup]="lockerFormGroup" onsubmit="save()">
+    <form [formGroup]="lockerFormGroup" (ngSubmit)="save()">
       <div class="form-wrapper">
         <mat-form-field class="material-form" appearance="outline">
           <mat-label>Número</mat-label>

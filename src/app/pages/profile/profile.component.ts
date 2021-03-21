@@ -1,6 +1,13 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControlOptions,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { CustomValidators } from 'src/app/common/custom-validators';
 import { User } from 'src/app/common/services/authentication/auth.models';
 import { AuthService } from 'src/app/common/services/authentication/auth.service';
 import { StorageService } from 'src/app/common/services/storage/storage.service';
@@ -17,10 +24,13 @@ export class ProfileComponent implements OnInit {
   data: User;
   isDisabled = true;
   loading = false;
+  passwordFormGroup: FormGroup;
   constructor(
     public storageService: StorageService,
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private customValidators: CustomValidators,
+    private toastr: ToastrService
   ) {
     this.data = this.storageService.currentUser;
     this.profileFormGroup = this.formBuilder.group({
@@ -54,6 +64,18 @@ export class ProfileComponent implements OnInit {
         [Validators.required],
       ],
     });
+    this.passwordFormGroup = this.formBuilder.group(
+      {
+        password: [null, [Validators.required, Validators.minLength(6)]],
+        confirmPassword: [null, [Validators.required]],
+      },
+      {
+        validator: this.customValidators.mustMatch(
+          'password',
+          'confirmPassword'
+        ),
+      } as AbstractControlOptions
+    );
   }
 
   ngOnInit(): void {
@@ -99,6 +121,32 @@ export class ProfileComponent implements OnInit {
       this.profileFormGroup.controls['last_name'].disable();
       this.companyFormGroup.controls['social_number'].disable();
       this.companyFormGroup.controls['name'].disable();
+    }
+  }
+  changePassword(): void {
+    if (this.passwordFormGroup.valid) {
+      this.loading = true;
+      const data = {
+        password: this.passwordFormGroup.controls['confirmPassword'].value,
+      };
+      this.authService
+        .changePassword(data)
+        .subscribe(
+          (USER) => {
+            this.toastr.success('Sua senha foi alterada com sucesso');
+            this.passwordFormGroup.controls['password'].patchValue('');
+            this.passwordFormGroup.controls['password'].setErrors(null);
+            this.passwordFormGroup.controls['confirmPassword'].patchValue('');
+            this.passwordFormGroup.controls['confirmPassword'].setErrors(null);
+          },
+          (err) =>
+            this.toastr.error(
+              'Houve um problema inesperado, por favor tente novamente mais tarde'
+            )
+        )
+        .add(() => {
+          this.loading = false;
+        });
     }
   }
 }

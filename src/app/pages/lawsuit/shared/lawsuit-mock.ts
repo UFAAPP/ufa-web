@@ -1,6 +1,6 @@
-import { CourtView, DistrictGroup } from './lawsuit-model';
+import { SelectView, DistrictGroup } from './lawsuit-model';
 
-export const COURTLIST: CourtView[] = [
+export const COURTLIST: SelectView[] = [
   { label: 'Infância', value: 'IN' },
   { label: 'Fazenda', value: 'FA' },
   { label: 'Civel', value: 'CI' },
@@ -11,6 +11,15 @@ export const COURTLIST: CourtView[] = [
   { label: 'Especial Cível', value: 'EC' },
   { label: 'Única', value: 'UN' },
 ];
+
+export const LAWSUITSTATUS: SelectView[] = [
+  { label: 'Em andamento', value: 'PROGRESS' },
+  { label: 'Arquivado', value: 'ARCHIVED' },
+];
+export const LAWSUITTYPES =[
+  'EXTRAJUDICIAL',
+  'JUDICIAL',
+]
 
 export const DISTRICTGROUPS: DistrictGroup[] = [
   {

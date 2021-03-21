@@ -1,18 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { Client } from 'src/app/pages/clients/shared/clients-model';
 import { ClientService } from 'src/app/pages/clients/shared/clients.service';
-
 import { Locker } from 'src/app/pages/lockers/shared/locker.model';
-import { LockerService } from 'src/app/pages/lockers/shared/locker.service';
 import {
-  CourtView,
   DistrictGroup,
   LAWSUITMASK,
+  SelectView
 } from '../../shared/lawsuit-model';
 import { LawsuitService } from '../../shared/lawsuit.service';
 
@@ -22,36 +20,39 @@ export const _filter = (opt: string[], filterValue: string): string[] => {
   );
 };
 @Component({
-  selector: 'app-new-lawsuit',
-  templateUrl: './new-lawsuit.component.html',
-  styleUrls: ['./new-lawsuit.component.scss'],
+  selector: 'app-lawsuit-nnew-modal',
+  templateUrl: './lawsuit-new-modal.component.html',
+  styleUrls: ['./lawsuit-new-modal.component.scss'],
 })
-export class NewLawsuitComponent implements OnInit {
+export class LawsuitNewModalComponent implements OnInit {
   loading = false;
   lawSuitFormGroup: FormGroup;
-  courts: CourtView[] = [];
+  courts: SelectView[] = [];
+  lawsuitStatus: SelectView[] = [];
   clients: Client[] = [];
-  lockers: Locker[] = [];
+  lawsuitTypes: string[] = [];
   districtGroup: DistrictGroup[];
   districtGroupOptions: Observable<DistrictGroup[]>;
   clientFilteredOptions: Observable<Client[]>;
   lawsuitMask = LAWSUITMASK;
   constructor(
     private formBuilder: FormBuilder,
-    public dialogRef: MatDialogRef<NewLawsuitComponent>,
+    public dialogRef: MatDialogRef<LawsuitNewModalComponent>,
     private lawsuitService: LawsuitService,
-    private lockerService: LockerService,
     private clientService: ClientService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    @Inject(MAT_DIALOG_DATA) public lockers: Locker[]
   ) {
     this.lawSuitFormGroup = this.formBuilder.group({
       district: ['', [Validators.required]],
-      court: ['', [Validators.required]],
+      court: ['IN', [Validators.required]],
       client: ['', [Validators.required]],
       locker: ['', [Validators.required]],
       code_number: ['', [Validators.required]],
       descriptor: ['', [Validators.required]],
-      observation: ['', [Validators.required]],
+      type: ['EXTRAJUDICIAL', [Validators.required]],
+      status: ['PROGRESS', [Validators.required]],
+      observation: null,
     });
   }
 
@@ -59,7 +60,8 @@ export class NewLawsuitComponent implements OnInit {
     this.getDistrictGroups();
     this.getCourts();
     this.getClients();
-    this.getLockers();
+    this.getLawsuitTypes();
+    this.getLawsuitStatus();
     this.districtGroupOptions = this.lawSuitFormGroup
       .get('district')!
       .valueChanges.pipe(
@@ -100,7 +102,7 @@ export class NewLawsuitComponent implements OnInit {
     if (this.lawSuitFormGroup.valid) {
       this.loading = true;
       this.lawsuitService
-        .postLawSuits(this.lawSuitFormGroup.value)
+        .createLawSuits(this.lawSuitFormGroup.value)
         .subscribe(
           (LAWSUITS) => {},
           (error) => {
@@ -125,17 +127,20 @@ export class NewLawsuitComponent implements OnInit {
       .getClients()
       .subscribe((CLIENTS) => (this.clients = CLIENTS));
   }
-  getLockers(): void {
-    this.lockerService.getLockers().subscribe((LOCKERS) => {
-      this.lockers = LOCKERS.filter((locker) => !locker.full);
-      if (this.lockers.length === 0) {
-        this.toastr.warning('Não existem gavetas vazias');
-      }
-    });
-  }
+
   getDistrictGroups(): void {
     this.lawsuitService
       .getDistricts()
       .subscribe((DISTRICTGROUPS) => (this.districtGroup = DISTRICTGROUPS));
+  }
+  getLawsuitTypes(): void {
+    this.lawsuitService
+      .getLawsuitTypes()
+      .subscribe((LAWSUITTYPES) => (this.lawsuitTypes = LAWSUITTYPES));
+  }
+  getLawsuitStatus(): void {
+    this.lawsuitService
+      .getLawsuitStatus()
+      .subscribe((LAWSUITSTATUS) => (this.lawsuitStatus = LAWSUITSTATUS));
   }
 }

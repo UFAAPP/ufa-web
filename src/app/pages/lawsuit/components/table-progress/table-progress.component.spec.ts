@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NewLawsuitComponent } from './new-lawsuit.component';
+import { TableProgressComponent } from './table-progress.component';
 
-describe('NewLawsuitComponent', () => {
-  let component: NewLawsuitComponent;
-  let fixture: ComponentFixture<NewLawsuitComponent>;
+describe('TableProgressComponent', () => {
+  let component: TableProgressComponent;
+  let fixture: ComponentFixture<TableProgressComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NewLawsuitComponent ]
+      declarations: [ TableProgressComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NewLawsuitComponent);
+    fixture = TestBed.createComponent(TableProgressComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

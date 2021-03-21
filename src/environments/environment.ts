@@ -3,7 +3,7 @@
 export const environment = {
   production: false,
   APIs: {
-    URL: 'http://api.ufa.app.br',
+    URL: 'http://127.0.0.1:8000',
     BRASILAPI: 'https://brasilapi.com.br/api/cep/v1',
   },
 };

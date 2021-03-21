@@ -1,27 +1,34 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { LawsuitComponent } from './lawsuit.component';
-import { LawSuitRoutingModule } from './lawsuit-routing.module';
-import { MatTableModule } from '@angular/material/table';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
 import {
   MatPaginatorIntl,
   MatPaginatorModule,
 } from '@angular/material/paginator';
-import { MatMenuModule } from '@angular/material/menu';
-import { AuthGuard } from 'src/app/common/services/authentication/auth-guard';
-import { MatPaginatorI18nService } from 'src/app/common/mat-paginator-i18n.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { NewLawsuitComponent } from './components/new-lawsuit/new-lawsuit.component';
-import { MatDialogModule } from '@angular/material/dialog';
-import { NgxMaskModule } from 'ngx-mask';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxMaskModule } from 'ngx-mask';
+import { MatPaginatorI18nService } from 'src/app/common/mat-paginator-i18n.service';
+import { AuthGuard } from 'src/app/common/services/authentication/auth-guard';
 import { Utils } from 'src/app/common/utils';
+import { PipesModule } from 'src/app/pipes/pipesModule.module';
+import { LawsuitEditModalComponent } from './components/lawsuit-edit-modal/lawsuit-edit-modal.component';
+import { LawsuitNewModalComponent } from './components/lawsuit-new-modal/lawsuit-new-modal.component';
+import { TableArchivedComponent } from './components/table-archived/table-archived.component';
+import { TableProgressComponent } from './components/table-progress/table-progress.component';
+import { LawSuitRoutingModule } from './lawsuit-routing.module';
+import { LawsuitComponent } from './lawsuit.component';
+import { LawsuitDetailsModalComponent } from './components/lawsuit-details-modal/lawsuit-details-modal.component';
+import { AvatarModule } from 'ngx-avatar';
 @NgModule({
   imports: [
     CommonModule,
@@ -40,8 +47,18 @@ import { Utils } from 'src/app/common/utils';
     NgxMaskModule.forRoot(),
     MatSelectModule,
     MatAutocompleteModule,
+    PipesModule,
+    MatTabsModule,
+    AvatarModule,
   ],
-  declarations: [LawsuitComponent, NewLawsuitComponent],
+  declarations: [
+    LawsuitComponent,
+    LawsuitNewModalComponent,
+    TableProgressComponent,
+    TableArchivedComponent,
+    LawsuitEditModalComponent,
+    LawsuitDetailsModalComponent,
+  ],
   providers: [
     AuthGuard,
     { provide: MatPaginatorIntl, useValue: MatPaginatorI18nService() },

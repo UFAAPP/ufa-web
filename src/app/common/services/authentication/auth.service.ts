@@ -6,7 +6,13 @@ import { Observable } from 'rxjs';
 import { map, take, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { StorageService } from '../storage/storage.service';
-import { Company, Credentials, RefreshToken, User, UserInfo } from './auth.models';
+import {
+  Company,
+  Credentials,
+  RefreshToken,
+  User,
+  UserInfo,
+} from './auth.models';
 
 @Injectable()
 export class AuthService {
@@ -75,13 +81,19 @@ export class AuthService {
     this.storageService.currentUser = user;
   }
   patchUser(user: UserInfo): Observable<UserInfo> {
-    const id = this.storageService.currentUser.user.id
+    const id = this.storageService.currentUser.user.id;
     return this.httpClient
       .patch<UserInfo>(`${this.apiUrl}/users/${id}/`, user)
       .pipe(take(1));
   }
+  changePassword(credentials: { password: string }): Observable<UserInfo> {
+    const id = this.storageService.currentUser.user.id;
+    return this.httpClient
+      .patch<UserInfo>(`${this.apiUrl}/users/${id}/`, credentials)
+      .pipe(take(1));
+  }
   patchCompany(company: Company): Observable<Company> {
-    const id = this.storageService.currentUser.user.company
+    const id = this.storageService.currentUser.user.company.id;
     return this.httpClient
       .patch<Company>(`${this.apiUrl}/companies/${id}/`, company)
       .pipe(take(1));

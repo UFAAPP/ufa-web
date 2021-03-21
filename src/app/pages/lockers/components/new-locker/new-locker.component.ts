@@ -28,13 +28,14 @@ export class NewLockerComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+  
   save(): void {
     if (this.lockerFormGroup.valid) {
       this.loading = true;
       this.lockerService
         .setLocker(this.lockerFormGroup.value)
         .subscribe(
-          (LOCKER) => console.log(LOCKER),
+          (LOCKER) => {},
           (error) => {
             console.log(error);
             this.toastr.error(

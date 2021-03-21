@@ -4,6 +4,7 @@ mat-dialog-content {
   height: 100%;
   position: relative;
   max-height: none !important;
+
   button.close-button {
     border: none;
     background: none;
@@ -24,14 +25,15 @@ mat-dialog-content {
     position: relative;
     height: 70px;
     ngx-avatar {
-      left: 160px;
+      left: 50%;
       position: absolute;
-      top: 30px;
+      top: 70px;
+      right: auto;
+      transform: translate(-50%, -50%);
     }
   }
   .bottom {
-    padding-left: 40px;
-    padding-right: 40px;
+    padding: 20px 2px 0;
     height: calc(100% - 120px);
     .material-form {
       width: 100%;
@@ -67,6 +69,38 @@ mat-dialog-content {
     box-shadow: none;
     svg {
       fill: green;
+    }
+  }
+}
+::ng-deep {
+  .mt-grp {
+    height: calc(100% - 120px);
+    margin-left: 40px;
+    margin-right: 40px;
+
+    .mat-tab-body-wrapper {
+      height: 100%;
+    }
+    .mat-expansion-panel-body {
+      padding: 0 16px !important;
+    }
+  }
+}
+
+mat-expansion-panel {
+  .panel-data {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    p {
+      display: flex;
+      justify-content: space-between;
+      color: var(--data-label);
+      span {
+        margin: 0 10px 10px;
+        color: var(--tertiary-color);
+      }
     }
   }
 }

@@ -1,3 +1,5 @@
+import { LawSuit } from '../../lawsuit/shared/lawsuit-model';
+
 export interface Client {
   id?: number;
   name: string;
@@ -7,4 +9,6 @@ export interface Client {
   social_number: string;
   observation?: string;
   company?: number;
+  lawsuits?: LawSuit[];
+  active?: boolean
 }
