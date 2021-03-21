@@ -65,7 +65,8 @@ input {
   --status-indicator-size: 10px;
   --header-height: 70px;
   --status-indicator-animation-duration: 2s;
-  --data-label: rgba(0,0,0,.54);
+  --data-label: #403f3fa6;
+
 }
 h1 {
   font-size: 54px;
@@ -164,6 +165,13 @@ button {
 .close-wrapper {
   display: flex;
   justify-content: flex-end;
+
+  button{
+    &:focus{
+      outline: none;
+    }
+    cursor: pointer;
+  }
 }
 .mat-dialog-container {
   padding: 0;

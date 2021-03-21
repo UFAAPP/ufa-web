@@ -1,0 +1,74 @@
+.mat-dialog-content {
+  display: block;
+  margin: 0 !important;
+  padding: 16px 24px !important;
+
+  .content {
+    margin-top: 8px;
+    width: 100%;
+    height: 100%;
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      .header-left {
+        display: flex;
+        div.client-data {
+          margin-left: 16px;
+          p.p-client-data {
+            &.bold {
+              font-weight: bold;
+            }
+          }
+          p.p-details {
+            font-size: 13px;
+            color: var(--tertiary-color);
+          }
+        }
+      }
+      .header-right {
+        text-align: right;
+        h3 {
+          margin-bottom: 8px;
+        }
+        p.p-details {
+          font-size: 13px;
+          color: var(--tertiary-color);
+        }
+      }
+    }
+    .data-body {
+      padding-top: 24px;
+      div.data-body-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        align-items: center;
+        div.data-info {
+          margin-bottom: 10px;
+          display: flex;
+          flex-direction: column;
+          p.p-label {
+            font-size: 13px;
+            color: var(--data-label);
+            margin-bottom: 5px;
+          }
+          p.p-content {
+            font-size: 16px;
+            &.text-area {
+              text-align: justify;
+            }
+          }
+          &:last-child {
+            align-items: flex-end;
+          }
+          &:first-child {
+            align-items: start;
+          }
+        }
+      }
+    }
+  }
+}

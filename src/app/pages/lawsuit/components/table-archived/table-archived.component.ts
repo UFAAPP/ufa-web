@@ -8,6 +8,8 @@ import { merge, of as observableOf } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { LawSuit, LAWSUITMASK } from '../../shared/lawsuit-model';
 import { LawsuitService } from '../../shared/lawsuit.service';
+import { LawsuitDetailsModalComponent } from '../lawsuit-details-modal/lawsuit-details-modal.component';
+import { LawsuitEditModalComponent } from '../lawsuit-edit-modal/lawsuit-edit-modal.component';
 
 @Component({
   selector: 'app-table-archived',
@@ -78,5 +80,25 @@ export class TableArchivedComponent implements OnInit, AfterViewInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  openEditModel(lawsuit: LawSuit): void {
+    const dialogRef = this.dialog.open(LawsuitEditModalComponent, {
+      width: '600px',
+      height: 'auto',
+      data: lawsuit,
+    });
+    dialogRef
+      .afterClosed()
+      .subscribe((result) => this.lawsuitService.sendFetchEvent());
+    dialogRef.backdropClick().subscribe((_) => {
+      this.lawsuitService.sendFetchEvent();
+    });
+  }
+  openDetailModel(lawsuit: LawSuit): void {
+    this.dialog.open(LawsuitDetailsModalComponent, {
+      width: '70vw',
+      height: 'auto',
+      data: lawsuit,
+    });
   }
 }

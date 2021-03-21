@@ -128,16 +128,6 @@ export class LawsuitEditModalComponent implements OnInit {
     const client = this.clients.find((client) => client.id === clientId);
     return client && client.name ? client.name : '';
   };
-  // if (this.clientFormGroup.dirty) {
-  //   this.clientService
-  //     .patchClients(this.clientFormGroup.value)
-  //     .subscribe((CLIENTS) => {
-  //       this.toastr.success('Contato adicionado com sucesso!');
-  //       this.dialogRef.close();
-  //     });
-  // } else {
-  //   this.dialogRef.close();
-  // }
 
   save(): void {
     if (this.lawSuitFormGroup.dirty) {

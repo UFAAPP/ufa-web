@@ -82,7 +82,7 @@
               <span class="material-icons"> more_horiz </span>
             </button>
             <mat-menu #menu="matMenu">
-              <button mat-menu-item>Informações</button>
+              <button mat-menu-item (click)="openDetailModel(row)">Informações</button>
               <button mat-menu-item (click)="openEditModel(row)">Editar</button>
             </mat-menu>
           </td>

@@ -1,0 +1,79 @@
+<mat-dialog-content>
+  <div class="close-wrapper">
+    <button mat-button mat-dialog-close>
+      <span class="material-icons"> close </span>
+    </button>
+  </div>
+  <div class="content">
+    <div class="header">
+      <div class="header-left">
+        <ngx-avatar
+          name="{{ lawsuit.client.name }}"
+          [initialsSize]="2"
+        ></ngx-avatar>
+        <div class="client-data">
+          <p class="p-client-data bold">{{ lawsuit.client.name }}</p>
+          <p class="p-details">
+            {{ lawsuit.client.email }}
+          </p>
+          <p class="p-details">
+            {{
+              lawsuit.client.phone | mask: '(00) 0000-0000 || (00) 00000-0000 '
+            }}
+          </p>
+        </div>
+      </div>
+      <div class="header-right">
+        <h3>{{ lawsuit.code_number | mask: lawsuitMask }}</h3>
+        <p class="p-details">
+          Criado: <span>{{ lawsuit.created_at | date: 'dd/MM/YYYY' }}</span>
+        </p>
+        <p class="p-details">
+          Atualizado: <span>{{ lawsuit.updated_at | date: 'dd/MM/YYYY' }}</span>
+        </p>
+      </div>
+    </div>
+    <div class="data-body">
+      <div class="data-body-row">
+        <div class="data-info">
+          <p class="p-label">Identificador</p>
+          <p class="p-content">{{ lawsuit.identifier }}</p>
+        </div>
+        <div class="data-info">
+          <p class="p-label">Status</p>
+          <p class="p-content">{{ lawsuit.status | lawsuitStatus }}</p>
+        </div>
+      </div>
+      <div class="data-body-row">
+        <div class="data-info">
+          <p class="p-label">Descrição</p>
+          <p class="p-content">{{ lawsuit.descriptor }}</p>
+        </div>
+        <div class="data-info">
+          <p class="p-label">Comarca</p>
+          <p class="p-content">{{ lawsuit.district }}</p>
+        </div>
+      </div>
+      <div class="data-body-row">
+        <div class="data-info">
+          <p class="p-label">Tipo de processo</p>
+          <p class="p-content">{{ lawsuit.type }}</p>
+        </div>
+        <div class="data-info">
+          <p class="p-label">Vara</p>
+          <p class="p-content">{{ lawsuit.court | court }}</p>
+        </div>
+        <div class="data-info">
+          <p class="p-label">Gaveta</p>
+          <p class="p-content">{{ lawsuit.locker.number }}</p>
+        </div>
+      </div>
+      <div class="data-body-row" *ngIf="lawsuit.observation">
+        <div class="data-info">
+          <p class="p-label">Observação</p>
+          <p class="p-content text-area">{{ lawsuit.observation }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>

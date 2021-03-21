@@ -8,6 +8,7 @@ import { merge, of as observableOf } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { LawSuit, LAWSUITMASK } from '../../shared/lawsuit-model';
 import { LawsuitService } from '../../shared/lawsuit.service';
+import { LawsuitDetailsModalComponent } from '../lawsuit-details-modal/lawsuit-details-modal.component';
 import { LawsuitEditModalComponent } from '../lawsuit-edit-modal/lawsuit-edit-modal.component';
 
 @Component({
@@ -91,6 +92,13 @@ export class TableProgressComponent implements OnInit, AfterViewInit {
       .subscribe((result) => this.lawsuitService.sendFetchEvent());
     dialogRef.backdropClick().subscribe((_) => {
       this.lawsuitService.sendFetchEvent();
+    });
+  }
+  openDetailModel(lawsuit: LawSuit): void {
+    this.dialog.open(LawsuitDetailsModalComponent, {
+      width: '50vw',
+      height: 'auto',
+      data: lawsuit,
     });
   }
 }

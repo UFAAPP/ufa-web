@@ -27,6 +27,8 @@ import { TableArchivedComponent } from './components/table-archived/table-archiv
 import { TableProgressComponent } from './components/table-progress/table-progress.component';
 import { LawSuitRoutingModule } from './lawsuit-routing.module';
 import { LawsuitComponent } from './lawsuit.component';
+import { LawsuitDetailsModalComponent } from './components/lawsuit-details-modal/lawsuit-details-modal.component';
+import { AvatarModule } from 'ngx-avatar';
 @NgModule({
   imports: [
     CommonModule,
@@ -47,6 +49,7 @@ import { LawsuitComponent } from './lawsuit.component';
     MatAutocompleteModule,
     PipesModule,
     MatTabsModule,
+    AvatarModule,
   ],
   declarations: [
     LawsuitComponent,
@@ -54,6 +57,7 @@ import { LawsuitComponent } from './lawsuit.component';
     TableProgressComponent,
     TableArchivedComponent,
     LawsuitEditModalComponent,
+    LawsuitDetailsModalComponent,
   ],
   providers: [
     AuthGuard,
