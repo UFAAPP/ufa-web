@@ -8,6 +8,7 @@ import { merge, of as observableOf } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { LawSuit, LAWSUITMASK } from '../../shared/lawsuit-model';
 import { LawsuitService } from '../../shared/lawsuit.service';
+import { LawsuitEditModalComponent } from '../lawsuit-edit-modal/lawsuit-edit-modal.component';
 
 @Component({
   selector: 'app-table-progress',
@@ -78,5 +79,18 @@ export class TableProgressComponent implements OnInit, AfterViewInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  openEditModel(lawsuit: LawSuit): void {
+    const dialogRef = this.dialog.open(LawsuitEditModalComponent, {
+      width: '600px',
+      height: 'auto',
+      data: lawsuit,
+    });
+    dialogRef
+      .afterClosed()
+      .subscribe((result) => this.lawsuitService.sendFetchEvent());
+    dialogRef.backdropClick().subscribe((_) => {
+      this.lawsuitService.sendFetchEvent();
+    });
   }
 }

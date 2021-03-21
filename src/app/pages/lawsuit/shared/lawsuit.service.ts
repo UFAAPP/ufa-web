@@ -33,10 +33,15 @@ export class LawsuitService {
     return this.httpClient.get<LawSuit[]>(`${this.apiUrl}/lawsuit/`);
   }
   createLawSuits(lawsuit: LawSuitPost): Observable<LawSuitPost> {
-    lawsuit.identifier = this.utils.getUniqueId(4);
     lawsuit.company = this.storageService.currentUser.user.company.id;
     return this.httpClient.post<LawSuitPost>(
       `${this.apiUrl}/lawsuit/`,
+      lawsuit
+    );
+  }
+  patchLawSuit(lawsuit: LawSuitPost): Observable<LawSuitPost> {
+    return this.httpClient.patch<LawSuitPost>(
+      `${this.apiUrl}/lawsuit/${lawsuit.id}/`,
       lawsuit
     );
   }

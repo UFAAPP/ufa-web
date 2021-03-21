@@ -93,7 +93,7 @@ export class AuthService {
       .pipe(take(1));
   }
   patchCompany(company: Company): Observable<Company> {
-    const id = this.storageService.currentUser.user.company;
+    const id = this.storageService.currentUser.user.company.id;
     return this.httpClient
       .patch<Company>(`${this.apiUrl}/companies/${id}/`, company)
       .pipe(take(1));

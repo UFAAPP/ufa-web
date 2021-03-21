@@ -8,12 +8,16 @@ import { DashboardService } from './shared/dashboard.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  dataTotal: DataTotal;
-  constructor(private dashboardService: DashboardService) {}
-
-  ngOnInit(): void {
+  dataTotal: DataTotal = {
+    count_client: 0,
+    count_locker: 0,
+    count_lawsuit: 0,
+  };
+  constructor(private dashboardService: DashboardService) {
     this.getTotal();
   }
+
+  ngOnInit(): void {}
   getTotal(): void {
     this.dashboardService
       .getTotal()

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { StorageService } from 'src/app/common/services/storage/storage.service';
 import { environment } from 'src/environments/environment';
@@ -11,14 +11,20 @@ import { Client } from './clients-model';
 })
 export class ClientService {
   apiUrl = environment.APIs.URL;
-  isChecked = true
+  isChecked = true;
+  loadedClients: Client[] = [];
   constructor(
     private httpClient: HttpClient,
     private storageService: StorageService
   ) {}
 
   getClients(): Observable<Client[]> {
-    return this.httpClient.get<Client[]>(`${this.apiUrl}/clients/`);
+    const response = this.httpClient.get<Client[]>(`${this.apiUrl}/clients/`);
+    response.subscribe((clients) => (this.loadedClients = clients));
+    return response;
+  }
+  getLoadedClients(): Observable<Client[]> {
+    return of(this.loadedClients);
   }
 
   postClients(client: Client): Observable<Client> {

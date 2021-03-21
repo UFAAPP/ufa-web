@@ -35,7 +35,7 @@ export class NewLockerComponent implements OnInit {
       this.lockerService
         .setLocker(this.lockerFormGroup.value)
         .subscribe(
-          (LOCKER) => console.log(LOCKER),
+          (LOCKER) => {},
           (error) => {
             console.log(error);
             this.toastr.error(

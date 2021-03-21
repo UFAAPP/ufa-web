@@ -9,10 +9,10 @@ import { ClientService } from 'src/app/pages/clients/shared/clients.service';
 import { Locker } from 'src/app/pages/lockers/shared/locker.model';
 import {
   DistrictGroup,
-  LAWSUITMASK, SelectView
+  LAWSUITMASK,
+  SelectView
 } from '../../shared/lawsuit-model';
 import { LawsuitService } from '../../shared/lawsuit.service';
-
 
 export const _filter = (opt: string[], filterValue: string): string[] => {
   return opt.filter((item) =>
@@ -20,11 +20,11 @@ export const _filter = (opt: string[], filterValue: string): string[] => {
   );
 };
 @Component({
-  selector: 'app-new-lawsuit',
-  templateUrl: './new-lawsuit.component.html',
-  styleUrls: ['./new-lawsuit.component.scss'],
+  selector: 'app-lawsuit-nnew-modal',
+  templateUrl: './lawsuit-new-modal.component.html',
+  styleUrls: ['./lawsuit-new-modal.component.scss'],
 })
-export class NewLawsuitComponent implements OnInit {
+export class LawsuitNewModalComponent implements OnInit {
   loading = false;
   lawSuitFormGroup: FormGroup;
   courts: SelectView[] = [];
@@ -37,11 +37,11 @@ export class NewLawsuitComponent implements OnInit {
   lawsuitMask = LAWSUITMASK;
   constructor(
     private formBuilder: FormBuilder,
-    public dialogRef: MatDialogRef<NewLawsuitComponent>,
+    public dialogRef: MatDialogRef<LawsuitNewModalComponent>,
     private lawsuitService: LawsuitService,
     private clientService: ClientService,
     private toastr: ToastrService,
-    @Inject(MAT_DIALOG_DATA) public lockers: Locker[],
+    @Inject(MAT_DIALOG_DATA) public lockers: Locker[]
   ) {
     this.lawSuitFormGroup = this.formBuilder.group({
       district: ['', [Validators.required]],

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NewLawsuitComponent } from './new-lawsuit.component';
+import { LawsuitEditModalComponent } from './lawsuit-edit-modal.component';
 
-describe('NewLawsuitComponent', () => {
-  let component: NewLawsuitComponent;
-  let fixture: ComponentFixture<NewLawsuitComponent>;
+describe('LawsuitEditModalComponent', () => {
+  let component: LawsuitEditModalComponent;
+  let fixture: ComponentFixture<LawsuitEditModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NewLawsuitComponent ]
+      declarations: [ LawsuitEditModalComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NewLawsuitComponent);
+    fixture = TestBed.createComponent(LawsuitEditModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

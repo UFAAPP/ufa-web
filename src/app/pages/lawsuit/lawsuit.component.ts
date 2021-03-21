@@ -1,14 +1,11 @@
-import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
-import { merge, Observable, of as observableOf } from 'rxjs';
-import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { LockerService } from '../lockers/shared/locker.service';
-import { NewLawsuitComponent } from './components/new-lawsuit/new-lawsuit.component';
+import { LawsuitNewModalComponent } from './components/lawsuit-new-modal/lawsuit-new-modal.component';
 import { LawSuit, LAWSUITMASK } from './shared/lawsuit-model';
 import { LawsuitService } from './shared/lawsuit.service';
 
@@ -55,7 +52,7 @@ export class LawsuitComponent implements OnInit {
           'Não existem gavetas vazias'
         );
       } else {
-        const dialogRef = this.dialog.open(NewLawsuitComponent, {
+        const dialogRef = this.dialog.open(LawsuitNewModalComponent, {
           width: '600px',
           height: 'auto',
           data: lockers,
