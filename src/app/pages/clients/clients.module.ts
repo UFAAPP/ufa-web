@@ -21,6 +21,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { PipesModule } from 'src/app/pipes/pipesModule.module';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 @NgModule({
   imports: [
     CommonModule,
@@ -41,7 +42,8 @@ import { PipesModule } from 'src/app/pipes/pipesModule.module';
     NgxMaskModule.forRoot(),
     MatTabsModule,
     MatExpansionModule,
-    PipesModule
+    PipesModule,
+    MatSlideToggleModule
   ],
   declarations: [ClientsComponent, ClientDetailComponent, ClientNewComponent],
   providers: [AuthGuard],

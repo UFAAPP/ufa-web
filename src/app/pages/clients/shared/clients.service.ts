@@ -11,6 +11,7 @@ import { Client } from './clients-model';
 })
 export class ClientService {
   apiUrl = environment.APIs.URL;
+  isChecked = true
   constructor(
     private httpClient: HttpClient,
     private storageService: StorageService
@@ -32,7 +33,7 @@ export class ClientService {
       .post<Client>(`${this.apiUrl}/clients/`, client)
       .pipe(take(1));
   }
-  patchClients(client: Client, id: number): Observable<Client> {
+  patchClients(client: Client): Observable<Client> {
     if (!client.whatsapp) {
       delete client.whatsapp;
     }
@@ -40,7 +41,7 @@ export class ClientService {
       delete client.observation;
     }
     return this.httpClient
-      .patch<Client>(`${this.apiUrl}/clients/${id}/`, client)
+      .patch<Client>(`${this.apiUrl}/clients/${client.id}/`, client)
       .pipe(take(1));
   }
 }

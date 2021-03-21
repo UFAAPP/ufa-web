@@ -143,6 +143,9 @@
               placeholder="Observação"
             ></textarea>
           </mat-form-field>
+          <mat-slide-toggle [color]="color" [checked]="client.active" (change)="onToggle(client)">
+            Ativo
+          </mat-slide-toggle>
         </form>
         <div class="actions">
           <button class="main-button-inverse" mat-dialog-close>Cancelar</button>
@@ -202,7 +205,9 @@
               </p>
             </div>
             <div class="panel-data" *ngIf="lawsuit.observation">
-              <p>Observação: <span>{{lawsuit.observation}}</span></p>
+              <p>
+                Observação: <span>{{ lawsuit.observation }}</span>
+              </p>
             </div>
           </mat-expansion-panel>
         </mat-accordion>

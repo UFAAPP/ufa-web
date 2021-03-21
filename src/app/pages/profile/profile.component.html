@@ -1,143 +1,236 @@
 <div class="content">
   <div class="header mat-elevation-z2">
     <ngx-avatar
-      name="{{ storageService.currentUser.user.first_name}} {{ storageService.currentUser.user.last_name}}"
+      name="{{ storageService.currentUser.user.first_name }} {{
+        storageService.currentUser.user.last_name
+      }}"
       [size]="130"
       [initialsSize]="2"
     ></ngx-avatar>
     <div class="profile-name">
-      <p>{{ storageService.currentUser.user.first_name}} {{ storageService.currentUser.user.last_name}}</p>
+      <p>
+        {{ storageService.currentUser.user.first_name }}
+        {{ storageService.currentUser.user.last_name }}
+      </p>
     </div>
   </div>
   <div class="card mat-elevation-z2">
-    <div class="loading-shade" *ngIf="loading">
-      <mat-spinner></mat-spinner>
-    </div>
-    <form [formGroup]="profileFormGroup">
-      <div class="title-wrapper">
-        <h3>Dados Pessoais</h3>
-      </div>
-      <div class="div-line">
-        <mat-form-field class="full-width" appearance="outline">
-          <mat-label>Email</mat-label>
-          <input type="email" matInput formControlName="email" required />
-          <mat-error>
-            <p *ngIf="profileFormGroup.controls['email'].hasError('required')">
-              Email é um campo obrigatório
-            </p>
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field class="full-width" appearance="outline">
-          <mat-label>CPF</mat-label>
-          <input
-            type="text"
-            matInput
-            formControlName="social_number"
-            required
-            mask="000.000.000-00"
-          />
-          <mat-error>
-            <p
-              *ngIf="
-                profileFormGroup.controls['social_number'].hasError('required')
-              "
+    <mat-tab-group animationDuration="500ms">
+      <mat-tab label="Perfil">
+        <div class="content-spinner">
+          <div class="loading-fade" *ngIf="loading">
+            <mat-spinner></mat-spinner>
+          </div>
+          <form [formGroup]="profileFormGroup">
+            <div class="title-wrapper">
+              <h3>Dados Pessoais</h3>
+            </div>
+            <div class="div-line">
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput formControlName="email" required />
+                <mat-error>
+                  <p
+                    *ngIf="
+                      profileFormGroup.controls['email'].hasError('required')
+                    "
+                  >
+                    Email é um campo obrigatório
+                  </p>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>CPF</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  formControlName="social_number"
+                  required
+                  mask="000.000.000-00"
+                />
+                <mat-error>
+                  <p
+                    *ngIf="
+                      profileFormGroup.controls['social_number'].hasError(
+                        'required'
+                      )
+                    "
+                  >
+                    Cpf é um campo obrigatório
+                  </p>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="div-line">
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Nome</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  formControlName="first_name"
+                  required
+                />
+                <mat-error>
+                  <p
+                    *ngIf="
+                      profileFormGroup.controls['first_name'].hasError(
+                        'required'
+                      )
+                    "
+                  >
+                    Nome é um campo obrigatório
+                  </p>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Sobrenome</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  formControlName="last_name"
+                  required
+                />
+                <mat-error>
+                  <p
+                    *ngIf="
+                      profileFormGroup.controls['last_name'].hasError(
+                        'required'
+                      )
+                    "
+                  >
+                    Sobrenome é um campo obrigatório
+                  </p>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </form>
+          <form [formGroup]="companyFormGroup">
+            <div class="title-wrapper">
+              <h3>Dados da empresa</h3>
+              <div class="div-line">
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>CNPJ</mat-label>
+                  <input
+                    type="text"
+                    matInput
+                    formControlName="social_number"
+                    required
+                    mask="00.000.000/0000-00"
+                  />
+                  <mat-error>
+                    <p
+                      *ngIf="
+                        companyFormGroup.controls['social_number'].hasError(
+                          'required'
+                        )
+                      "
+                    >
+                      CNPJ é um campo obrigatório
+                    </p>
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Razão Social</mat-label>
+                  <input type="text" matInput formControlName="name" required />
+                  <mat-error>
+                    <p
+                      *ngIf="
+                        companyFormGroup.controls['name'].hasError('required')
+                      "
+                    >
+                      Razão social é um campo obrigatório
+                    </p>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+          </form>
+          <div class="actions">
+            <button
+              *ngIf="!isDisabled"
+              class="main-button-inverse"
+              (click)="editable()"
             >
-              Cpf é um campo obrigatório
-            </p>
-          </mat-error>
-        </mat-form-field>
-      </div>
-      <div class="div-line">
-        <mat-form-field class="full-width" appearance="outline">
-          <mat-label>Nome</mat-label>
-          <input type="text" matInput formControlName="first_name" required />
-          <mat-error>
-            <p
-              *ngIf="
-                profileFormGroup.controls['first_name'].hasError('required')
-              "
-            >
-              Nome é um campo obrigatório
-            </p>
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field class="full-width" appearance="outline">
-          <mat-label>Sobrenome</mat-label>
-          <input type="text" matInput formControlName="last_name" required />
-          <mat-error>
-            <p
-              *ngIf="
-                profileFormGroup.controls['last_name'].hasError('required')
-              "
-            >
-              Sobrenome é um campo obrigatório
-            </p>
-          </mat-error>
-        </mat-form-field>
-      </div>
-    </form>
-    <form [formGroup]="companyFormGroup">
-      <div class="title-wrapper">
-        <h3>Dados da empresa</h3>
-        <div class="div-line">
-          <mat-form-field class="full-width" appearance="outline">
-            <mat-label>CNPJ</mat-label>
-            <input
-              type="text"
-              matInput
-              formControlName="social_number"
-              required
-              mask="00.000.000/0000-00"
-            />
-            <mat-error>
-              <p
-                *ngIf="
-                  companyFormGroup.controls['social_number'].hasError(
-                    'required'
-                  )
-                "
-              >
-                CNPJ é um campo obrigatório
-              </p>
-            </mat-error>
-          </mat-form-field>
-          <mat-form-field class="full-width" appearance="outline">
-            <mat-label>Razão Social</mat-label>
-            <input type="text" matInput formControlName="name" required />
-            <mat-error>
-              <p *ngIf="companyFormGroup.controls['name'].hasError('required')">
-                Razão social é um campo obrigatório
-              </p>
-            </mat-error>
-          </mat-form-field>
+              Cancelar
+            </button>
+            <button *ngIf="!isDisabled" class="main-button" (click)="save()">
+              Salvar
+            </button>
+            <button *ngIf="isDisabled" class="main-button" (click)="editable()">
+              Editar
+            </button>
+          </div>
         </div>
-      </div>
-    </form>
-    <div class="actions">
-      <button
-        *ngIf="!isDisabled"
-        
-        class="main-button-inverse"
-        (click)="editable()"
-      >
-        Cancelar
-      </button>
-      <button
-        *ngIf="!isDisabled"
-        
-        class="main-button"
-        (click)="save()"
-      >
-        Salvar
-      </button>
-      <button
-        *ngIf="isDisabled"
-        
-        class="main-button"
-        (click)="editable()"
-      >
-        Editar
-      </button>
-    </div>
+      </mat-tab>
+      <mat-tab label="Alterar senha">
+        <div class="content-spinner">
+          <div class="loading-fade" *ngIf="loading">
+            <mat-spinner></mat-spinner>
+          </div>
+          <form
+            [formGroup]="passwordFormGroup"
+            id="passwordForm"
+            (ngSubmit)="changePassword()"
+          >
+            <div class="title-wrapper">
+              <h3>Alterar senha</h3>
+            </div>
+            <div class="div-line">
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Senha</mat-label>
+                <input
+                  type="password"
+                  matInput
+                  formControlName="password"
+                  required
+                />
+                <mat-error>
+                  <p
+                    *ngIf="
+                      passwordFormGroup.controls['password'].hasError(
+                        'required'
+                      )
+                    "
+                  >
+                    Senha é um campo obrigatório
+                  </p>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Confirmação da senha</mat-label>
+                <input
+                  type="password"
+                  matInput
+                  formControlName="confirmPassword"
+                  required
+                />
+                <mat-error>
+                  <p
+                    *ngIf="
+                      passwordFormGroup.controls['confirmPassword'].hasError(
+                        'required'
+                      )
+                    "
+                  >
+                    Confirmação da senha é um campo obrigatório
+                  </p>
+                  <p
+                    *ngIf="
+                      passwordFormGroup.controls['confirmPassword'].errors
+                        ?.mustMatch
+                    "
+                  >
+                    Senhas não conferem.
+                  </p>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </form>
+          <div class="actions">
+            <button class="main-button" form="passwordForm">Salvar</button>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
   </div>
 </div>

@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ThemePalette } from '@angular/material/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { LAWSUITMASK } from 'src/app/pages/lawsuit/shared/lawsuit-model';
@@ -17,6 +18,7 @@ export class ClientDetailComponent implements OnInit {
   loading = false;
   panelOpenState = false;
   lawsuitMask = LAWSUITMASK;
+  color: ThemePalette = 'primary';
   constructor(
     @Inject(MAT_DIALOG_DATA) public client: Client,
     private _formBuilder: FormBuilder,
@@ -25,6 +27,7 @@ export class ClientDetailComponent implements OnInit {
     private toastr: ToastrService
   ) {
     this.clientFormGroup = this._formBuilder.group({
+      id: client.id,
       name: [
         { value: client.name, disabled: this.isDisabled },
         [Validators.required],
@@ -65,7 +68,7 @@ export class ClientDetailComponent implements OnInit {
   save(): void {
     if (this.clientFormGroup.dirty) {
       this.clientService
-        .patchClients(this.clientFormGroup.value, this.client.id!)
+        .patchClients(this.clientFormGroup.value)
         .subscribe((CLIENTS) => {
           this.toastr.success('Contato adicionado com sucesso!');
           this.dialogRef.close();
@@ -79,5 +82,10 @@ export class ClientDetailComponent implements OnInit {
     if (whatsapp) {
       window.open(`https://wa.me/55${whatsapp}`, '_blank');
     }
+  }
+  onToggle(client: Client): void {
+    client.active = !client.active;
+    delete client.lawsuits
+    this.clientService.patchClients(client).subscribe((CLIENT) => {});
   }
 }

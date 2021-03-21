@@ -10,4 +10,5 @@ export interface Client {
   observation?: string;
   company?: number;
   lawsuits?: LawSuit[];
+  active?: boolean
 }

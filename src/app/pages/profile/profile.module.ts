@@ -13,6 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { IConfig, NgxMaskModule } from 'ngx-mask';
 import { ToastrModule } from 'ngx-toastr';
+import { MatTabsModule } from '@angular/material/tabs';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -30,6 +31,7 @@ const maskConfig: Partial<IConfig> = {
     MatFormFieldModule,
     MatButtonModule,
     MatProgressSpinnerModule,
+    MatTabsModule,
     NgxMaskModule.forRoot(maskConfig),
     ToastrModule.forRoot({
       timeOut: 3000,
@@ -40,6 +42,5 @@ const maskConfig: Partial<IConfig> = {
   ],
   declarations: [ProfileComponent],
   providers: [AuthGuard],
-  exports: [ProfileComponent],
 })
 export class ProfileModule {}
