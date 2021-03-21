@@ -17,7 +17,7 @@
           <input
             matInput
             formControlName="code_number"
-            placeholder="Ex.: {{lawsuitMask}}"
+            placeholder="Ex.: {{ lawsuitMask }}"
             required
             [mask]="lawsuitMask"
           />
@@ -142,13 +142,40 @@
           </mat-error>
         </mat-form-field>
       </div>
+      <div class="div-line">
+        <mat-form-field appearance="outline">
+          <mat-label>Tipo de processo</mat-label>
+          <mat-select required formControlName="type">
+            <mat-option *ngFor="let type of lawsuitTypes" [value]="type">
+              {{ type }}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="lawSuitFormGroup.controls['type'].hasError('required')"
+          >
+            tip ode processo é um campo obrigatório
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Status do processo</mat-label>
+          <mat-select required formControlName="status">
+            <mat-option *ngFor="let status of lawsuitStatus" [value]="status.value">
+              {{ status.label}}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="lawSuitFormGroup.controls['status'].hasError('required')"
+          >
+            Status do processo é um campo obrigatório
+          </mat-error>
+        </mat-form-field>
+      </div>
       <div>
         <mat-form-field appearance="outline">
           <mat-label>Observação</mat-label>
           <textarea
             matInput
             placeholder="Ex. Aguardando resposta..."
-            required
             formControlName="observation"
           ></textarea>
           <mat-error

@@ -28,6 +28,7 @@ export class NewLockerComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+  
   save(): void {
     if (this.lockerFormGroup.valid) {
       this.loading = true;

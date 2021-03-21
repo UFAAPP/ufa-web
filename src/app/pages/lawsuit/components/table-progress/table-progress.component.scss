@@ -1,0 +1,13 @@
+.search-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  mat-form-field {
+    width: 100%;
+  }
+
+}
+.table-container {
+  position: relative;
+}

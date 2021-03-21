@@ -1,21 +1,17 @@
-.content {
- 
+.card {
+  background-color: #fff;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
   .header-content {
     margin-bottom: 15px;
-  }
-  .search-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    mat-form-field {
-      width: 300px;
-    }
-    button{
+    button {
       height: 40px;
       width: 200px;
     }
-  }
-  .table-container {
-    position: relative;
   }
 }

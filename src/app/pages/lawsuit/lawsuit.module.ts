@@ -22,6 +22,10 @@ import { NgxMaskModule } from 'ngx-mask';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { Utils } from 'src/app/common/utils';
+import { PipesModule } from 'src/app/pipes/court/pipesModule.module';
+import { MatTabsModule } from '@angular/material/tabs';
+import { TableProgressComponent } from './components/table-progress/table-progress.component';
+import { TableArchivedComponent } from './components/table-archived/table-archived.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -40,8 +44,15 @@ import { Utils } from 'src/app/common/utils';
     NgxMaskModule.forRoot(),
     MatSelectModule,
     MatAutocompleteModule,
+    PipesModule,
+    MatTabsModule,
   ],
-  declarations: [LawsuitComponent, NewLawsuitComponent],
+  declarations: [
+    LawsuitComponent,
+    NewLawsuitComponent,
+    TableProgressComponent,
+    TableArchivedComponent,
+  ],
   providers: [
     AuthGuard,
     { provide: MatPaginatorIntl, useValue: MatPaginatorI18nService() },
